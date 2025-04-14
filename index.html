@@ -2457,30 +2457,30 @@ Tower on a cloudy day.
 
       <div class="chunk-row">
         <div class="chunk-content">
-            <h2 id="failure-modes">7.2. Failure modes</h2>
+            <h2 id="failure-modes">7.2. 失敗モード</h2>
             
-            <p>Voice AI apps have particular shapes and failure modes that influence how we design and run evals. Latency is critical (so latency that would be acceptable in a text-mode system is a failure for a voice system). They are multi-model (poor performance could be caused by TTS instability rather than LLM behavior, for example).</p>
+            <p>音声AIアプリケーションには特有の形態と失敗モードがあり、それらが評価の設計と実行方法に影響を与えます。レイテンシーは非常に重要です（テキストモードのシステムでは許容されるレイテンシーでも、音声システムでは失敗となります）。また、マルチモーダルであるため（例えば、パフォーマンスの低下はLLMの動作ではなく、TTSの不安定さが原因かもしれません）。</p>
             
-            <p>Some areas that frequently present challenges today are:</p>
+            <p>現在、頻繁に課題となる領域には以下のようなものがあります：</p>
             
             <ul class="arrow-list">
-              <li>Latency of time to first speech and time to agent response</li>
-              <li>Transcription errors</li>
-              <li>Understanding and verbalizing addresses, emails, names, phone numbers</li>
-              <li>Interruptions</li>
+              <li>最初の発話までの時間とエージェントの応答時間のレイテンシー</li>
+              <li>文字起こしエラー</li>
+              <li>住所、メール、名前、電話番号の理解と音声化</li>
+              <li>中断</li>
             </ul>
         </div>
       </div>
 
       <div class="chunk-row">
         <div class="chunk-content">
-            <h2 id="eval-strategy">7.3. Crafting an eval strategy</h2>
+            <h2 id="eval-strategy">7.3. 評価戦略の構築</h2>
             
-            <p>A rudimentary eval process can be as simple as a spreadsheet with prompts and test cases.</p>
+            <p>基本的な評価プロセスは、プロンプトとテストケースを含むスプレッドシートのように単純なものでも構いません。</p>
             
-            <p>One typical approach is to run each prompt whenever you test a new model or change a major part of your system, using an LLM to judge whether the responses fall within some definition of expected parameters.</p>
+            <p>一般的なアプローチの一つは、新しいモデルをテストしたり、システムの主要部分を変更したりするたびに各プロンプトを実行し、LLMを使用して応答が期待されるパラメータの範囲内に収まっているかどうかを判断することです。</p>
 
-            <p>Having a basic eval is much better than not having any evals at all. But investing in evals – having really good evals – becomes critical as you start to operate at scale.</p>
+            <p>基本的な評価を持つことは、まったく評価を持たないよりもはるかに良いことです。しかし、評価に投資すること—本当に良い評価を持つこと—は、規模で運用し始めると非常に重要になります。</p>
 
         </div>
         
@@ -2493,21 +2493,21 @@ Tower on a cloudy day.
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <p>Evaluation platforms that offer sophisticated tooling for voice AI evals are just beginning to emerge. <a href="https://coval.dev" target="_blank">Coval</a> is a startup building testing and eval tools for voice and chat agents. Coval's simulation-oriented approach is strongly influencing the evolution of evals in the voice AI ecosystem.</p>
+          <p>音声AI評価のための高度なツールを提供する評価プラットフォームはまだ登場し始めたばかりです。<a href="https://coval.dev" target="_blank">Coval</a>は音声およびチャットエージェントのテストと評価ツールを構築しているスタートアップです。Covalのシミュレーション指向のアプローチは、音声AIエコシステムにおける評価の進化に強い影響を与えています。</p>
 
           <div class="chapter-image">
-            <img src="images/7a.jpg" alt="A screenshot from the Coval evals platform UI" class="chunk-image-inline" width="80%">
-            <p class="image-caption">A screenshot from the Coval evals platform UI</p>
+            <img src="images/7a.jpg" alt="Coval評価プラットフォームUIのスクリーンショット" class="chunk-image-inline" width="80%">
+            <p class="image-caption">Coval評価プラットフォームUIのスクリーンショット</p>
           </div>
             
-            <p>Coval and other evaluation platforms can help with:</p>
+            <p>Covalやその他の評価プラットフォームは以下のような点で役立ちます：</p>
             
             <ul class="arrow-list">
-              <li>Prompt iteration.</li>
-              <li>Off-the-shelf metrics for audio, workflow, function calling, and semantic evaluation of conversations.</li>
-              <li>Hillclimbing on problem areas (for example, making your agents better at handling interruptions).</li>
-              <li>Regression testing (to be sure when you fix one problem area you don't introduce regressions in other previously solved problem areas).</li>
-              <li>Tracking performance changes over time, both as changes are made by developers, and across user cohorts.</li>
+              <li>プロンプトの反復。</li>
+              <li>音声、ワークフロー、関数呼び出し、会話の意味的評価のための既製のメトリクス。</li>
+              <li>問題領域の改善（例えば、中断の処理を向上させるなど）。</li>
+              <li>回帰テスト（ある問題領域を修正したときに、以前に解決した他の問題領域に回帰を引き起こさないことを確認するため）。</li>
+              <li>開発者による変更や、ユーザーコホート間での時間経過に伴うパフォーマンスの変化の追跡。</li>
             </ul>
 
         </div>
@@ -2521,16 +2521,16 @@ Tower on a cloudy day.
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <h1 id="telephony">8. Integrating with telephony infrastructure</h1>
+          <h1 id="telephony">8. 電話インフラストラクチャとの統合</h1>
             
-            <p><strong>Most of the fastest growing voice AI use cases today involve telephone calls.</strong> AI voice agents are answering phone calls and making phone calls at scale today.</p>
+            <p><strong>現在、最も急速に成長している音声AIのユースケースの多くは電話通話に関連しています。</strong> AI音声エージェントは今日、電話に応答し、大規模に電話をかけています。</p>
             
-            <p>Some of this is happening in traditional call centers. Call centers mostly view voice AI as a technology that can improve "deflection rates" – the percentage of calls that can be handled by automation rather than human agents. This makes the ROI for adopting voice AI clear. If the per-minute cost of an LLM is cheaper than the per-minute cost of a human agent, the buying decision is easy.<sup>[55]</sup></p>
+            <p>これらの一部は従来のコールセンターで行われています。コールセンターは主に音声AIを「デフレクション率」—自動化によって処理できる通話の割合—を向上させることができる技術と見なしています。これにより、音声AI採用のROI（投資収益率）が明確になります。LLMの1分あたりのコストが人間のエージェントの1分あたりのコストよりも安ければ、購入の決断は簡単です。<sup>[55]</sup></p>
           </div>
           <div class="chunk-notes">
             <div class="chunk-footnotes">
               <div class="footnote">
-                <p>[55] Assuming, of course, that AI agent performance is good. Which, for a wide variety of customer support use cases today, it is.</p>
+                <p>[55] もちろん、AIエージェントのパフォーマンスが良いことを前提としています。現在、多様なカスタマーサポートのユースケースでは、それは実現されています。</p>
               </div>
             </div>
           </div>
@@ -2538,28 +2538,28 @@ Tower on a cloudy day.
       <div class="chunk-row">
         <div class="chunk-content">
             
-            <p>A couple of interesting things are happening that accelerate adoption, though, beyond simple ROI calculations.</p>
+            <p>しかし、単純なROI計算を超えて、採用を加速させる興味深いことがいくつか起きています。</p>
             
-            <p>Voice AI agents are scalable in ways that a human staff isn't. Once you have voice AI in place, wait times during high-volume periods go down. (Customer satisfaction scores go up, as a direct result.)</p>
+            <p>音声AIエージェントは人間のスタッフとは異なる方法でスケーラブルです。音声AIを導入すると、高負荷期間中の待ち時間が短縮されます（その結果、顧客満足度スコアが直接向上します）。</p>
             
-            <p>And LLMs can sometimes do a better job than human agents because we're giving them better tools. In many customer support situations, human agents have to deal with multiple legacy backend systems. Finding information in a timely fashion can be a challenge. When we deploy voice AI into that same situation, we have to build API-level access to these legacy systems. New LLM-plus-API layers are enabling the technology transition to voice AI.</p>
+            <p>また、LLMはより良いツールを提供されているため、人間のエージェントよりも優れた仕事をすることがあります。多くのカスタマーサポート状況では、人間のエージェントは複数のレガシーバックエンドシステムを扱わなければなりません。タイムリーに情報を見つけることが課題となることがあります。同じ状況に音声AIを導入する場合、これらのレガシーシステムへのAPIレベルのアクセスを構築する必要があります。新しいLLMとAPIの層が音声AIへの技術移行を可能にしています。</p>
             
-            <p>It's clear that generative AI is going to completely reshape the call center landscape over the next few years.</p>
+            <p>生成AIが今後数年間でコールセンターの風景を完全に再形成することは明らかです。</p>
             
-            <p>Outside the call center, voice AI is changing how small businesses field phone calls, and how they use phone calls for information discovery and coordination. We talk every day to startups building specialized AI telephony solutions for every business vertical that you've ever heard of.</p>
+            <p>コールセンター以外でも、音声AIは小規模ビジネスが電話に対応する方法や、情報発見と調整のために電話を使用する方法を変えています。私たちは毎日、あらゆるビジネス分野向けの特化したAI電話ソリューションを構築しているスタートアップと話をしています。</p>
             
-            <p>People in this space often joke that pretty soon humans won't make, or receive, phone calls at all. The phone calls will all be AI-to-AI. Judging from the trendlines we see, there's some truth to this!</p>
+            <p>この分野の人々はよく、まもなく人間は電話をかけたり受けたりしなくなり、すべての電話はAI対AIになるだろうと冗談を言います。私たちが見ている傾向線から判断すると、これには真実があります！</p>
             
-            <p>If you're interested in telephony for voice AI, there are a few acronyms and common ideas you should be familiar with.</p>
+            <p>音声AIの電話に興味がある場合、いくつかの頭字語と一般的な概念に精通しておくべきです。</p>
             
             <ul class="arrow-list">
-              <li>PSTN is the <em>public, switched, telephone network</em>. If you need to interact with a real phone that has a phone number, you'll need to work with a PSTN platform. Twilio is a PSTN platform that almost every developer has heard of.</li>
+              <li>PSTNは<em>公衆交換電話網</em>（Public Switched Telephone Network）です。電話番号を持つ実際の電話と対話する必要がある場合は、PSTNプラットフォームと連携する必要があります。Twilioはほとんどすべての開発者が聞いたことのあるPSTNプラットフォームです。</li>
               
-              <li>SIP is a specific protocol used for IP telephony, but in a general sense SIP is used to refer to telephone interconnects between systems. If you're interfacing with a call center tech stack, for example, you'll need to use SIP. You can work with a SIP provider, or host your own SIP servers.</li>
+              <li>SIPはIP電話に使用される特定のプロトコルですが、一般的な意味ではSIPはシステム間の電話相互接続を指します。例えば、コールセンターの技術スタックとインターフェースする場合は、SIPを使用する必要があります。SIPプロバイダーと連携するか、独自のSIPサーバーをホストすることができます。</li>
               
-              <li>DTMF tones are the keypress sounds used to navigate telephone menus. Voice agents need to be able to send DTMF tones to interact with real-world telephone systems. LLMs are pretty good at dealing with phone trees. You just need to do a little bit of prompt engineering and define functions that send DTMF tones.</li>
+              <li>DTMFトーンは電話メニューをナビゲートするために使用されるキープレス音です。音声エージェントは実際の電話システムと対話するためにDTMFトーンを送信できる必要があります。LLMは電話ツリーの処理が得意です。少しのプロンプトエンジニアリングとDTMFトーンを送信する関数を定義するだけで済みます。</li>
               
-              <li>Voice agents often need to execute call transfers. In a simple transfer, the voice AI exits the session by calling a function that triggers a call transfer.<sup>[56]</sup> A <em>warm transfer</em> is a hand-off from one agent to another, in which the agents talk to each other before transferring the caller to the second agent. Voice AI agents can do warm transfers, just like humans can. The voice agent starts out talking to the human caller, then puts the human caller on hold and has a conversation with the new human agent being brought into the call, then connects the human caller to the human agent.</li>
+              <li>音声エージェントはしばしば通話転送を実行する必要があります。単純な転送では、音声AIは通話転送をトリガーする関数を呼び出してセッションを終了します。<sup>[56]</sup> <em>ウォームトランスファー</em>は、エージェントが発信者を転送する前に互いに会話する、あるエージェントから別のエージェントへの引き継ぎです。音声AIエージェントは人間と同様にウォームトランスファーを行うことができます。音声エージェントは最初に人間の発信者と話し、次に人間の発信者を保留にして通話に参加する新しい人間のエージェントと会話し、その後、人間の発信者を人間のエージェントに接続します。</li>
             </ul>
 
         </div>
@@ -2567,7 +2567,7 @@ Tower on a cloudy day.
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[56] The actual transfer operation might be an API call to your telephony platform, or a SIP REFER action.</p>
+              <p>[56] 実際の転送操作は、電話プラットフォームへのAPI呼び出しやSIP REFERアクションかもしれません。</p>
             </div>
           </div>
         </div>
@@ -2575,21 +2575,21 @@ Tower on a cloudy day.
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <h1 id="rag-memory">9. RAG and memory</h1>
+          <h1 id="rag-memory">9. RAGとメモリ</h1>
             
-            <p>Voice AI agents often access information from external systems. For example, you might need to:</p>
+            <p>音声AIエージェントはしばしば外部システムから情報にアクセスします。例えば、以下のようなことが必要かもしれません：</p>
             
             <ul class="arrow-list">
-              <li>Incorporate information about the user into the LLM system instructions.</li>
-              <li>Retrieve previous conversation history.</li>
-              <li>Look up information in a knowledge base.</li>
-              <li>Perform a web search.</li>
-              <li>Do a realtime inventory or order status check.</li>
+              <li>ユーザーに関する情報をLLMシステム指示に組み込む。</li>
+              <li>以前の会話履歴を取得する。</li>
+              <li>ナレッジベースで情報を検索する。</li>
+              <li>ウェブ検索を実行する。</li>
+              <li>リアルタイムの在庫や注文状況を確認する。</li>
             </ul>
             
-            <p>All of these fall under the category of RAG – retrieval augmented generation. RAG is the general AI engineering term for combining information retrieval and LLM prompting.</p>
+            <p>これらはすべてRAG – 検索拡張生成（Retrieval Augmented Generation）のカテゴリに分類されます。RAGは情報検索とLLMプロンプティングを組み合わせる一般的なAIエンジニアリング用語です。</p>
             
-            <p>The "simplest possible RAG" for a voice agent is looking up information about a user before the conversation starts, then merging that information into the LLM system instructions.</p>
+            <p>音声エージェントの「最もシンプルなRAG」は、会話が始まる前にユーザーに関する情報を検索し、その情報をLLMシステム指示にマージすることです。</p>
             
             <pre><code>user_info = fetch_user_info(user_id)
 
@@ -2598,21 +2598,21 @@ system_prompt_base = "You are a voice AI assistant..."
 system_prompt = (
   system_prompt_base
   + f"""
-The name of the patient is {user_info["name"]}.
-The patient is {user_info["age"]} years old.
-The patient has the following medical history: {user_info["summarized_history"]}.
+患者の名前は{user_info["name"]}です。
+患者は{user_info["age"]}歳です。
+患者には以下の病歴があります：{user_info["summarized_history"]}。
 """
 )
 </code></pre>
-            <p class="image-caption">Simple RAG – perform a lookup at the beginning of the session</p>
+            <p class="image-caption">シンプルなRAG – セッションの開始時に検索を実行する</p>
             
-            <p>RAG is a deep topic and an area of rapid change.<sup>[57]</sup> Techniques range from the relatively simple approach above that just uses basic lookups and string interpolation, to systems that organize very large amounts of semi-structured data using embeddings and vector databases.</p>
+            <p>RAGは深いトピックであり、急速に変化している領域です。<sup>[57]</sup> 技術は、基本的な検索と文字列補間を使用する上記の比較的シンプルなアプローチから、埋め込みとベクトルデータベースを使用して非常に大量の半構造化データを整理するシステムまで多岐にわたります。</p>
 
           </div>
           <div class="chunk-notes">
             <div class="chunk-footnotes">
               <div class="footnote">
-                <p>[57] Hmm. This sounds like every other area of generative AI, these days.</p>
+                <p>[57] うーん。これは最近の生成AIの他のすべての領域と同じように聞こえますね。</p>
               </div>
             </div>
           </div>
@@ -2620,11 +2620,11 @@ The patient has the following medical history: {user_info["summarized_history"]}
       <div class="chunk-row">
         <div class="chunk-content">
             
-            <p>Often, an 80/20 approach gets you a very long way. If you have an existing knowledge base, use the APIs you already have. Write simple evals so you can test a few different formats for injecting lookup results into the conversation context. Deploy to production, then monitor how well this works with real-world users.</p>
+            <p>多くの場合、80/20アプローチで非常に長い道のりを進むことができます。既存のナレッジベースがある場合は、すでに持っているAPIを使用してください。検索結果を会話コンテキストに挿入するためのいくつかの異なるフォーマットをテストできるシンプルな評価を作成します。本番環境にデプロイし、実際のユーザーとの相互作用でどれだけうまく機能するかを監視します。</p>
             
             <pre><code>async def query_order_system(function_name, tool_call_id, args, llm, context, result_callback):
-  "First push a speech frame. This is handy when the LLM response might take a while."
-  await llm.push_frame(TTSSpeakFrame("Please hold on while I look that order up for you."))
+  "まず音声フレームをプッシュします。これはLLMの応答に時間がかかる可能性がある場合に便利です。"
+  await llm.push_frame(TTSSpeakFrame("その注文を調べている間、少々お待ちください。"))
 
   query_result = order_system.get(args["query"])
   await result_callback({
@@ -2637,16 +2637,16 @@ The patient has the following medical history: {user_info["summarized_history"]}
 
 llm.register_function("query_order_system", query_order_system)
 </code></pre>
-            <p class="image-caption">RAG during a session. Define a function for the LLM to call when information lookup is required. In this example, we also emit a pre-set spoken phrase to let the user know the system will take a few seconds to respond.</p>
+            <p class="image-caption">セッション中のRAG。情報検索が必要な場合にLLMが呼び出す関数を定義します。この例では、システムが応答するのに数秒かかることをユーザーに知らせるために、あらかじめ設定された音声フレーズも発します。</p>
             
-            <p>As always, latency is a bigger challenge with voice AI than for non-voice AI systems. When an LLM makes a function call request, the extra inference call adds to latency. Looking up information in external systems can be slow, too. It's often useful to trigger a simple speech output before executing the RAG lookup, to let the user know that work is in progress.</p>
+            <p>いつものように、レイテンシーは非音声AIシステムよりも音声AIでより大きな課題です。LLMが関数呼び出しリクエストを行うと、追加の推論呼び出しがレイテンシーを増加させます。外部システムでの情報検索も遅い場合があります。RAG検索を実行する前に単純な音声出力をトリガーして、作業が進行中であることをユーザーに知らせることがよくあります。</p>
             
-            <p>More broadly, memory across sessions is a useful capability. Imagine a voice AI personal assistant that needs to remember everything you talk about. Two general approaches are:</p>
+            <p>より広い意味では、セッション間のメモリは有用な機能です。あなたが話すすべてのことを覚えておく必要がある音声AI個人アシスタントを想像してみてください。一般的なアプローチは2つあります：</p>
             
             <ol class="list-decimal">
-              <li>Save each conversation to persistent storage. Test a few approaches to loading conversations into the context. For example, a strategy that works well for the personal assistant use case: always load the most recent conversation in full at agent startup, load summaries of the most recent N conversations, and define a lookup function the LLM can use to load older conversations dynamically as needed.</li>
+              <li>各会話を永続的なストレージに保存します。コンテキストに会話をロードするためのいくつかのアプローチをテストします。例えば、個人アシスタントのユースケースでうまく機能する戦略：エージェント起動時に最新の会話を完全にロードし、最新のN個の会話の要約をロードし、LLMが必要に応じて古い会話を動的にロードするために使用できる検索関数を定義します。</li>
               
-              <li>Save each message in the conversation history separately in a database, along with metadata about the message graph. Index every message (perhaps using semantic embeddings). This allows you to build branching conversation histories dynamically. You might want to do this if your app makes heavy use of image input (LLM vision). Images take up a lot of context space!<sup>[58]</sup> This approach also allows you to build branching UIs, which is a direction that AI app designers are just starting to explore.</li>
+              <li>会話履歴の各メッセージをメッセージグラフに関するメタデータとともに個別にデータベースに保存します。すべてのメッセージにインデックスを付けます（おそらく意味的な埋め込みを使用して）。これにより、分岐する会話履歴を動的に構築することができます。アプリが画像入力（LLMビジョン）を多用する場合は、これを行いたいかもしれません。<sup>[58]</sup> 画像はコンテキスト空間を多く占めます！このアプローチでは、分岐UIを構築することもできます。これはAIアプリデザイナーがちょうど探索し始めている方向です。</li>
             </ol>
 
         </div>
@@ -2655,7 +2655,7 @@ llm.register_function("query_order_system", query_order_system)
           <div class="chunk-footnotes">
 
             <div class="footnote">
-              <p>[58] See <a href="#multimodality">Multimodality</a>.</p>
+              <p>[58] <a href="#multimodality">マルチモダリティ</a>を参照してください。</p>
             </div>
           </div>
         </div>
@@ -2663,38 +2663,38 @@ llm.register_function("query_order_system", query_order_system)
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <h1 id="hosting">10. Hosting and Scaling</h1>
-            <p>Voice AI applications often have some traditional application components — web app frontends, API endpoints and other back-end elements. But the agent process itself is different enough from traditional app components that deploying and scaling voice AI comes with unique challenges.</p>
+          <h1 id="hosting">10. ホスティングとスケーリング</h1>
+            <p>音声AIアプリケーションには、ウェブアプリフロントエンド、APIエンドポイント、その他のバックエンド要素など、いくつかの従来のアプリケーションコンポーネントがあります。しかし、エージェントプロセス自体は従来のアプリコンポーネントとは十分に異なるため、音声AIのデプロイとスケーリングには独自の課題があります。</p>
 
             <ul class="arrow-list">
-              <li>The voice AI agent conversation loop is usually a long-running process (not a request/response function that exits when a single response is finished generating).</li>
-              <li>Voice agents stream audio in realtime. Anything that stalls streaming can create audio glitches. (CPU spikes on a shared virtual machine, program flow that blocks audio thread execution even for as little as 10ms, etc.)</li>
-              <li>Voice agents usually need either WebSocket or WebRTC connectivity. Cloud service network gateway and routing products don't support WebSockets nearly as well as they support HTTP. They often don't support UDP at all. (UDP is required for WebRTC.)</li>
+              <li>音声AIエージェントの会話ループは通常、長時間実行されるプロセスです（単一の応答が生成されると終了するリクエスト/レスポンス関数ではありません）。</li>
+              <li>音声エージェントはリアルタイムで音声をストリーミングします。ストリーミングを停滞させるものは音声の不具合を引き起こす可能性があります（共有仮想マシンでのCPUスパイク、わずか10msでも音声スレッドの実行をブロックするプログラムフローなど）。</li>
+              <li>音声エージェントは通常、WebSocketまたはWebRTC接続が必要です。クラウドサービスのネットワークゲートウェイとルーティング製品は、HTTPほどWebSocketをサポートしていません。多くの場合、UDPをまったくサポートしていません（UDPはWebRTCに必要です）。</li>
             </ul>
 
-            <p>For all of these reasons, it's generally not possible to use a serverless framework like AWS Lambda or Google Cloud Run for voice AI.</p>
+            <p>これらすべての理由から、音声AIにはAWS LambdaやGoogle Cloud Runなどのサーバーレスフレームワークを使用することは一般的に不可能です。</p>
   
-            <p>The best practice today for deploying voice AI agents is:</p>
+            <p>現在の音声AIエージェントをデプロイするためのベストプラクティスは次のとおりです：</p>
 
             <ul class="arrow-list">
-              <li>Once you've gotten past the prototyping phase, invest engineering time in creating lightweight tooling to build Docker (or similar) containers to deploy your agents.</li>
-              <li>Push your container to your compute platform of choice. For simple deployments, you can just keep a fixed number of virtual machines running. At some point, though, you'll want to hook into your platform's tooling so you can autoscale, deploy new versions gracefully, implement good service discovery and failover, and build other at-scale devops requirements.</li>
-              <li>Kubernetes is the standard these days for managing containers, deployments, and scaling. Kubernetes has a steep learning curve, but is supported on all of the major cloud platforms. Kubernetes has a very large ecosystem around it.</li>
-              <li>For deploying software updates, you'll want to set long drain times that allow existing connections to stay alive until sessions end. This is not terribly hard to do in Kubernetes, but the details depend on your k8s engine and version.</li>
-              <li>Cold starts are a problem for voice AI agents, because fast connection times are important. Keeping an idle pool of agents is the easiest way to avoid long cold starts. If your workloads don't require running large models locally, you can generally engineer fast container cold starts without too much effort.<sup>[59]</sup></li>
+              <li>プロトタイピングフェーズを過ぎたら、エージェントをデプロイするためのDocker（または同様の）コンテナを構築する軽量ツールの作成にエンジニアリング時間を投資します。</li>
+              <li>コンテナを選択したコンピューティングプラットフォームにプッシュします。シンプルなデプロイメントの場合は、固定数の仮想マシンを実行し続けることができます。しかし、ある時点で、自動スケーリング、新バージョンの適切なデプロイ、優れたサービスディスカバリとフェイルオーバーの実装、その他の大規模なDevOps要件の構築のために、プラットフォームのツールに接続したくなるでしょう。</li>
+              <li>Kubernetesは現在、コンテナ、デプロイメント、スケーリングを管理するための標準です。Kubernetesには急な学習曲線がありますが、すべての主要なクラウドプラットフォームでサポートされています。Kubernetesには非常に大きなエコシステムがあります。</li>
+              <li>ソフトウェアアップデートをデプロイする場合、セッションが終了するまで既存の接続を維持できる長いドレイン時間を設定する必要があります。これはKubernetesでは特に難しくありませんが、詳細はk8sエンジンとバージョンによって異なります。</li>
+              <li>コールドスタートは音声AIエージェントにとって問題です。なぜなら、接続時間の速さが重要だからです。アイドル状態のエージェントプールを維持することは、長いコールドスタートを避ける最も簡単な方法です。ワークロードがローカルで大きなモデルを実行する必要がない場合、一般的にあまり努力せずに高速なコンテナコールドスタートを設計することができます。<sup>[59]</sup></li>
             </ul>
 
-            <p>Virtual machine specs and container packing often trip people up when deploying to production for the first time. The specs your agents need will vary depending on what libraries you use and how much CPU-intensive work you do within your agent process. A good rule of thumb is to start by running a single agent per virtual machine CPU, with double the maximum amount of RAM you see an agent process consuming on your dev machines.<sup>[60]</sup></p>
+            <p>仮想マシンの仕様とコンテナのパッキングは、初めて本番環境にデプロイする際によく人々を躓かせます。エージェントに必要な仕様は、使用するライブラリとエージェントプロセス内で行うCPU集約型の作業の量によって異なります。良い経験則は、仮想マシンのCPUごとに1つのエージェントを実行し、開発マシンでエージェントプロセスが消費する最大RAM量の2倍を用意することから始めることです。<sup>[60]</sup></p>
 
 
         </div>
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[59] If you are running large models locally, advice about cold starts is well outside the scope of this guide. If you're not already an expert on GPU and container optimization, you probably want to find an expert, rather than climb up that learning curve yourself (at least until you're operating at a big enough scale to amortize the cost of developing the tooling you need).</p>
+              <p>[59] 大きなモデルをローカルで実行している場合、コールドスタートに関するアドバイスはこのガイドの範囲外です。GPUとコンテナの最適化の専門家でない場合は、おそらく（少なくとも必要なツールを開発するコストを償却するのに十分な大規模な運用をするまでは）その学習曲線を上るよりも、専門家を見つけた方が良いでしょう。</p>
             </div>
             <div class="footnote">
-              <p>[60] Make sure your container runtime is starting new agent processes on idle CPUs. This is not always the k8s default.</p>
+              <p>[60] コンテナランタイムがアイドル状態のCPUで新しいエージェントプロセスを開始していることを確認してください。これは必ずしもk8sのデフォルトではありません。</p>
             </div>
           </div>
         </div>
@@ -2702,24 +2702,24 @@ llm.register_function("query_order_system", query_order_system)
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <h1 id="future">11. What's coming in 2025</h1>
+          <h1 id="future">11. 2025年に来るもの</h1>
             
-            <p>Speaking of the growth of AI engineering, voice AI grew enormously in 2024 and we expect this to continue in 2025.</p>
+            <p>AIエンジニアリングの成長について言えば、音声AIは2024年に大きく成長し、2025年もこの傾向が続くと予想しています。</p>
             
-            <p></p>This expanding interest and adoption will create continuing progress in some important core areas:</p>
+            <p></p>この拡大する関心と採用により、いくつかの重要な中核領域で継続的な進歩が生まれるでしょう：</p>
 
             <ul class="arrow-list">
-              <li>More latency optimization from all model builders and service providers. For a long time, most people implementing services and almost all published benchmarks focused on throughput rather than latency. For voice AI, we care about time to first token much more than we care about tokens per second.</li>
-              <li>Progress towards full integration of all the non-text modalities in models and APIs.</li>
-              <li>More audio-specific features in testing and eval tools.</li>
-              <li>Context caching APIs that support the needs of realtime multimodal use cases.</li>
-              <li>New voice agent platforms from multiple providers.</li>
-              <li>Speech-to-speech model APIs from multiple providers.</li>
+              <li>すべてのモデル構築者とサービスプロバイダーからのさらなるレイテンシー最適化。長い間、サービスを実装するほとんどの人と公開されたベンチマークのほとんどは、レイテンシーよりもスループットに焦点を当てていました。音声AIでは、1秒あたりのトークン数よりも最初のトークンまでの時間をはるかに重視します。</li>
+              <li>モデルとAPIにおけるすべての非テキストモダリティの完全な統合に向けた進歩。</li>
+              <li>テストと評価ツールにおけるより多くの音声特化機能。</li>
+              <li>リアルタイムマルチモーダルユースケースのニーズをサポートするコンテキストキャッシングAPI。</li>
+              <li>複数のプロバイダーからの新しい音声エージェントプラットフォーム。</li>
+              <li>複数のプロバイダーからの音声から音声へのモデルAPI。</li>
             </ul>
 
-            <p>If you're interested in hot takes about 2025 from four experts in the voice AI space, skip to <a href="https://www.youtube.com/live/B6zTwHh-abw?t=3065s" target="_blank">54:05 in the recording of the panel</a> from January's San Francisco Voice AI Meetup. Karan Goel, Niamh Gavin, Shrestha Basu-Mallick, and Swyx all offered their predictions for what we'll see in the coming year: universal memory, AI in Hollywood, moving from model imitating to model understanding, and a contrarian position on robotics.</p>
+            <p>音声AI分野の4人の専門家による2025年についての率直な意見に興味がある場合は、1月のサンフランシスコ音声AIミートアップのパネルの<a href="https://www.youtube.com/live/B6zTwHh-abw?t=3065s" target="_blank">録画の54:05</a>にスキップしてください。Karan Goel、Niamh Gavin、Shrestha Basu-Mallick、Swyxはすべて、来年に見られるであろうものについての予測を提供しました：ユニバーサルメモリ、ハリウッドでのAI、モデル模倣からモデル理解への移行、そしてロボティクスに関する反対意見。</p>
             
-            <p>It's going to be a fun year.</p>
+            <p>楽しい一年になるでしょう。</p>
 
 
 
@@ -2735,20 +2735,20 @@ llm.register_function("query_order_system", query_order_system)
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <h1 id="contributors">Contributors</h1>
+          <h1 id="contributors">貢献者</h1>
         </div>
       </div>
 
       <div class="chunk-row">
         <div class="chunk-content">
-            <h2 id="lead-author">Lead Author</h2>
+            <h2 id="lead-author">主執筆者</h2>
             <p>Kwindla Hultman Kramer</p>
         </div>
       </div>
 
       <div class="chunk-row">
         <div class="chunk-content">
-            <h2 id="contributing-authors">Contributing Authors<sup>[61]</sup></h2>
+            <h2 id="contributing-authors">貢献執筆者<sup>[61]</sup></h2>
             <p>Aleix Conchillo Flaqué, Mark Backman, Moishe Lettvin, Kwindla Hultman Kramer, Jon Taylor,
             Vaibhav159, chadbailey59, allenmylath, Filipi Fuchter, TomTom101, Mert Sefa AKGUN, marcus-daily, vipyne, Adrian Cowham, Lewis Wolfgang, Filipi da Silva Fuchter, Vanessa Pyne, Chad
             Bailey, Dominic, joachimchauvet, Jin Kim, Sharvil Nanavati, sahil suman, James Hush, Paul
