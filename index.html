@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voice AI & Voice Agents | An Illustrated Primer</title>
-  <meta name="description" content="A comprehensive guide to voice AI in 2025">
-  <meta property="og:title" content="Voice AI & Voice Agents | An Illustrated Primer">
-  <meta property="og:description" content="A comprehensive guide to voice AI in 2025">
+  <title>音声AI＆音声エージェント | 図解入門</title>
+  <meta name="description" content="2025年の音声AIに関する包括的なガイド">
+  <meta property="og:title" content="音声AI＆音声エージェント | 図解入門">
+  <meta property="og:description" content="2025年の音声AIに関する包括的なガイド">
   <meta property="og:image" content="images/meta.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Voice AI & Voice Agents | An Illustrated Primer">
-  <meta name="twitter:description" content="A comprehensive guide to voice AI in 2025">
+  <meta name="twitter:title" content="音声AI＆音声エージェント | 図解入門">
+  <meta name="twitter:description" content="2025年の音声AIに関する包括的なガイド">
   <meta name="twitter:image" content="images/meta.jpg">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="images/favicon.ico">
@@ -19,9 +19,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.typekit.net/rff5lbb.css">
   <link rel="stylesheet" href="script/binary-numbers.css">
   <style>
+    body {
+      font-family: 'Noto Sans JP', 'DM Sans', sans-serif;
+    }
     #table-of-contents ul {
       list-style-type: none;
       padding-left: 20px;
@@ -34,134 +38,132 @@
       <img src="images/Figure 0100 horizontal.svg">
     </div>
 
-
     <header class="header">
-      <h1 class="title">Voice AI & Voice Agents</h1>
-      <h2 class="subtitle">An Illustrated Primer</h2>
+      <h1 class="title">音声AI＆音声エージェント</h1>
+      <h2 class="subtitle">図解入門</h2>
     </header>
     
-
     <nav id="table-of-contents">
-      <h2 class="table-of-contents-title">Table of Contents</h2>
+      <h2 class="table-of-contents-title">目次</h2>
       <ol>
-        <li><a href="#conversational-voice-ai">Conversational Voice AI in 2025</a></li>
-        <li><a href="#about-this-guide">About this guide</a></li>
-        <li><a href="#basic-loop">The basic conversational AI loop</a></li>
+        <li><a href="#conversational-voice-ai">2025年の会話型音声AI</a></li>
+        <li><a href="#about-this-guide">このガイドについて</a></li>
+        <li><a href="#basic-loop">基本的な会話AIループ</a></li>
         <li>
-          <a href="#core-tech">Core technologies and best practices</a>
+          <a href="#core-tech">コア技術とベストプラクティス</a>
           <ul>
-            <li><a href="#latency">4.1. Latency</a></li>
+            <li><a href="#latency">4.1. レイテンシー</a></li>
             <li>
-              <a href="#llms-for-voice">4.2. LLMs for voice use cases</a>
+              <a href="#llms-for-voice">4.2. 音声用途のLLM</a>
               <ul>
-                <li><a href="#latency-llm">4.2.1. Latency</a></li>
-                <li><a href="#cost-comparison">4.2.2. Cost comparison</a></li>
-                <li><a href="#open-source">4.2.3. Open source / open weights</a></li>
-                <li><a href="#speech-to-speech">4.2.4. What about speech-to-speech models?</a></li>
+                <li><a href="#latency-llm">4.2.1. レイテンシー</a></li>
+                <li><a href="#cost-comparison">4.2.2. コスト比較</a></li>
+                <li><a href="#open-source">4.2.3. オープンソース / オープンウェイト</a></li>
+                <li><a href="#speech-to-speech">4.2.4. 音声対音声モデルについて</a></li>
               </ul>
             </li>
             <li>
-              <a href="#speech-to-text">4.3. Speech-to-text</a>
+              <a href="#speech-to-text">4.3. 音声認識（Speech-to-text）</a>
               <ul>
                 <li><a href="#deepgram">4.3.1. Deepgram</a></li>
-                <li><a href="#prompting-help">4.3.2. Prompting can help the LLM</a></li>
-                <li><a href="#other-stt-options">4.3.3. Other speech-to-text options</a></li>
-                <li><a href="#gemini-transcribing">4.3.4. Transcribing with Google Gemini</a></li>
+                <li><a href="#prompting-help">4.3.2. プロンプトによる支援</a></li>
+                <li><a href="#other-stt-options">4.3.3. その他の音声認識オプション</a></li>
+                <li><a href="#gemini-transcribing">4.3.4. Google Geminiによる文字起こし</a></li>
               </ul>
             </li>
             <li>
-              <a href="#text-to-speech">4.4. Text-to-speech</a>
+              <a href="#text-to-speech">4.4. 音声合成（Text-to-speech）</a>
             </li>
             <li>
-              <a href="#audio-processing">4.5. Audio processing</a>
+              <a href="#audio-processing">4.5. 音声処理</a>
               <ul>
-                <li><a href="#avoiding-spurious-interruptions">4.5.1. Microphones and automatic gain control</a></li>
-                <li><a href="#echo-cancellation">4.5.2. Echo cancellation</a></li>
-                <li><a href="#noise-suppression">4.5.3. Noise suppression, speech, and music</a></li>
-                <li><a href="#encoding">4.5.4. Encoding</a></li>
-                <li><a href="#server-side-noise">4.5.5. Server-side noise processing and speaker isolation</a></li>
-                <li><a href="#voice-activity-detection">4.5.6. Voice activity detection</a></li>
+                <li><a href="#avoiding-spurious-interruptions">4.5.1. マイクと自動ゲイン制御</a></li>
+                <li><a href="#echo-cancellation">4.5.2. エコーキャンセレーション</a></li>
+                <li><a href="#noise-suppression">4.5.3. ノイズ抑制、音声、音楽</a></li>
+                <li><a href="#encoding">4.5.4. エンコーディング</a></li>
+                <li><a href="#server-side-noise">4.5.5. サーバーサイドのノイズ処理と話者分離</a></li>
+                <li><a href="#voice-activity-detection">4.5.6. 音声活性検出</a></li>
               </ul>
             </li>
             <li>
-              <a href="#network-transport">4.6. Network transport</a>
+              <a href="#network-transport">4.6. ネットワークトランスポート</a>
               <ul>
-                <li><a href="#websockets-webrtc">4.6.1. WebSockets and WebRTC</a></li>
+                <li><a href="#websockets-webrtc">4.6.1. WebSocketsとWebRTC</a></li>
                 <li><a href="#http">4.6.2. HTTP</a></li>
-                <li><a href="#quic-moq">4.6.3. QUIC and MoQ</a></li>
-                <li><a href="#network-routing">4.6.4. Network routing</a></li>
+                <li><a href="#quic-moq">4.6.3. QUICとMoQ</a></li>
+                <li><a href="#network-routing">4.6.4. ネットワークルーティング</a></li>
               </ul>
             </li>
             <li>
-              <a href="#turn-detection">4.7. Turn detection</a>
+              <a href="#turn-detection">4.7. ターン検出</a>
               <ul>
-                <li><a href="#voice-activity-detection-4-7">4.7.1 Voice activity detection</a></li>
-                <li><a href="#push-to-talk">4.7.2. Push-to-talk</a></li>
-                <li><a href="#endpoint-markers">4.7.3. Endpoint markers</a></li>
-                <li><a href="#context-aware-turn-detection">4.7.4. Context-aware turn detection</a></li>
+                <li><a href="#voice-activity-detection-4-7">4.7.1 音声活性検出</a></li>
+                <li><a href="#push-to-talk">4.7.2. プッシュトゥトーク</a></li>
+                <li><a href="#endpoint-markers">4.7.3. エンドポイントマーカー</a></li>
+                <li><a href="#context-aware-turn-detection">4.7.4. コンテキスト認識型ターン検出</a></li>
               </ul>
             </li>
             <li>
-              <a href="#interruption-handling">4.8. Interruption handling</a>
+              <a href="#interruption-handling">4.8. 割り込み処理</a>
               <ul>
-                <li><a href="#avoiding-spurious-interruptions">4.8.1. Avoiding spurious interruptions</a></li>
-                <li><a href="#maintaining-accurate-context">4.8.2. Maintaining accurate context after an interruption</a></li>
+                <li><a href="#avoiding-spurious-interruptions">4.8.1. 誤った割り込みの回避</a></li>
+                <li><a href="#maintaining-accurate-context">4.8.2. 割り込み後の正確なコンテキスト維持</a></li>
               </ul>
             </li>
             <li>
-              <a href="#managing-conversation-context">4.9. Managing conversation context</a>
+              <a href="#managing-conversation-context">4.9. 会話コンテキストの管理</a>
               <ul>
-                <li><a href="#differences-between-llm-apis">4.9.1. Differences between LLM APIs</a></li>
-                <li><a href="#modifying-context-between-turns">4.9.2. Modifying the context between turns</a></li>
+                <li><a href="#differences-between-llm-apis">4.9.1. LLM API間の違い</a></li>
+                <li><a href="#modifying-context-between-turns">4.9.2. ターン間でのコンテキスト修正</a></li>
               </ul>
             </li>
             <li>
-              <a href="#function-calling">4.10. Function calling</a>
+              <a href="#function-calling">4.10. 関数呼び出し</a>
               <ul>
-                <li><a href="#function-calling-reliability">4.10.1. Function calling reliability in the voice AI context</a></li>
-                <li><a href="#latency-function-calls">4.10.2. Function call latency</a></li>
-                <li><a href="#handling-interruptions">4.10.3. Handling interruptions</a></li>
-                <li><a href="#streaming-mode">4.10.4. Streaming mode and function call chunks</a></li>
-                <li><a href="#execute-function-calls">4.10.5. How and where to execute function calls</a></li>
-                <li><a href="#async-function-calls">4.10.6. Asynchronous function calls</a></li>
-                <li><a href="#parallel-composite-function-calling">4.10.7. Parallel and composite function calling</a></li>
+                <li><a href="#function-calling-reliability">4.10.1. 音声AIコンテキストにおける関数呼び出しの信頼性</a></li>
+                <li><a href="#latency-function-calls">4.10.2. 関数呼び出しのレイテンシー</a></li>
+                <li><a href="#handling-interruptions">4.10.3. 割り込みの処理</a></li>
+                <li><a href="#streaming-mode">4.10.4. ストリーミングモードと関数呼び出しチャンク</a></li>
+                <li><a href="#execute-function-calls">4.10.5. 関数呼び出しの実行方法と場所</a></li>
+                <li><a href="#async-function-calls">4.10.6. 非同期関数呼び出し</a></li>
+                <li><a href="#parallel-composite-function-calling">4.10.7. 並列および複合関数呼び出し</a></li>
               </ul>
             </li>
-            <li><a href="#multimodality">4.11. Multimodality</a></li>
+            <li><a href="#multimodality">4.11. マルチモダリティ</a></li>
           </ul>
         </li>
         <li>
-          <a href="#multiple-models">Using multiple AI models</a>
+          <a href="#multiple-models">複数のAIモデルの使用</a>
           <ul>
-            <li><a href="#fine-tuned-models">5.1. Using several fine-tuned models</a></li>
-            <li><a href="#async-inference-tasks">5.2. Performing async inference tasks</a></li>
-            <li><a href="#content-guardrails">5.3. Content guardrails</a></li>
-            <li><a href="#single-inference-actions">5.4. Performing single inference actions</a></li>
-            <li><a href="#self-improving-systems">5.5. Towards self-improving systems</a></li>
+            <li><a href="#fine-tuned-models">5.1. 複数の微調整モデルの使用</a></li>
+            <li><a href="#async-inference-tasks">5.2. 非同期推論タスクの実行</a></li>
+            <li><a href="#content-guardrails">5.3. コンテンツガードレール</a></li>
+            <li><a href="#single-inference-actions">5.4. 単一推論アクションの実行</a></li>
+            <li><a href="#self-improving-systems">5.5. 自己改善システムに向けて</a></li>
           </ul>
         </li>
         <li>
-          <a href="#scripting">Scripting and instruction following</a>
+          <a href="#scripting">スクリプティングと指示の遵守</a>
         </li>
         <li>
-          <a href="#evals">Voice AI Evals</a>
+          <a href="#evals">音声AI評価</a>
           <ul>
-            <li><a href="#evals-different">7.1. Voice AI evals are different from software unit tests</a></li>
-            <li><a href="#failure-modes">7.2. Failure modes</a></li>
-            <li><a href="#eval-strategy">7.3. Crafting an eval strategy</a></li>
+            <li><a href="#evals-different">7.1. 音声AI評価はソフトウェアユニットテストとは異なる</a></li>
+            <li><a href="#failure-modes">7.2. 失敗モード</a></li>
+            <li><a href="#eval-strategy">7.3. 評価戦略の策定</a></li>
           </ul>
         </li>
-        <li><a href="#telephony">Integrating with telephony infrastructure</a></li>
+        <li><a href="#telephony">電話インフラストラクチャとの統合</a></li>
         <li>
-          <a href="#rag-memory">RAG and memory</a>
+          <a href="#rag-memory">RAGとメモリ</a>
         </li>
         <li>
-          <a href="#hosting">Hosting and Scaling</a>
+          <a href="#hosting">ホスティングとスケーリング</a>
         </li>
         <li>
-          <a href="#future">What's coming in 2025</a>
+          <a href="#future">2025年に来るもの</a>
         </li> 
-        <li><a href="#contributors">Contributors</a></li>
+        <li><a href="#contributors">貢献者</a></li>
       </ol>
     </nav>
 
@@ -169,20 +171,20 @@
       <div class="chunk-row">
         <div class="chunk-content">
 
-          <h1 id="conversational-voice-ai">1. Conversational Voice AI in 2025</h1>
+          <h1 id="conversational-voice-ai">1. 2025年の会話型音声AI</h1>
             
-            <p>LLMs are good conversationalists.</p>
+            <p>LLMは優れた会話能力を持っています。</p>
             
-            <p>If you've spent much time in free-form dialog with ChatGPT or Claude, you have an intuitive sense that talking to an LLM feels quite natural and is broadly useful.</p>
+            <p>ChatGPTやClaudeとの自由な対話を経験したことがある方なら、LLMとの会話が非常に自然で、幅広い用途に役立つことを直感的に理解できるでしょう。</p>
             
-            <p>LLMs are also good at turning unstructured information into structured data.<sup>[1]</sup></p>
+            <p>また、LLMは非構造化情報を構造化データに変換することも得意としています。<sup>[1]</sup></p>
             
-            <p>New voice AI agents leverage these two LLM capabilities – conversation, and extracting structure from unstructured data – to create a new kind of user experience.</p>
+            <p>新しい音声AIエージェントは、LLMのこれら2つの能力 - 会話能力と、非構造化データから構造を抽出する能力 - を活用して、新しい種類のユーザー体験を生み出しています。</p>
           </div>
           <div class="chunk-notes">
             <div class="chunk-footnotes">
               <div class="footnote">
-                <p>[1] Here we mean this broadly, rather than in the narrow sense of the "structured output" feature of some LLMs.</p>
+                <p>[1] ここでは、一部のLLMの「構造化出力」機能という狭い意味ではなく、より広い意味で使用しています。</p>
               </div>
             </div>
           </div>
@@ -190,55 +192,55 @@
 
         <div class="chunk-row">
           <div class="chunk-content">
-            <p>Voice AI is being deployed today in a wide range of business contexts. For example:</p>
+            <p>音声AIは今日、幅広いビジネスコンテキストで展開されています。例えば：</p>
             
             <ul class="arrow-list">
-              <li>collecting patient data prior to healthcare appointments,</li>
-              <li>following up on inbound sales leads,</li>
-              <li>handling an increasing variety of call center tasks,</li>
-              <li>coordinating scheduling and logistics between companies, and</li>
-              <li>answering the phone for nearly every kind of small business.</li>
+              <li>医療機関での診察前の患者データ収集</li>
+              <li>インバウンドセールスリードのフォローアップ</li>
+              <li>コールセンター業務の増加する種類のタスク処理</li>
+              <li>企業間のスケジュール調整とロジスティクス</li>
+              <li>ほぼすべての種類の小規模ビジネスの電話応対</li>
             </ul>
             
-            <p>On the consumer side, conversational voice (and video) AI is also starting to make its way into social applications and games. And developers are sharing personal voice AI projects and experiments every day on GitHub and social media.</p>
+            <p>消費者向けでは、会話型音声（および映像）AIもソーシャルアプリケーションやゲームに進出し始めています。また、開発者たちは個人的な音声AIプロジェクトや実験をGitHubやソーシャルメディアで日々共有しています。</p>
 
         </div>
       </div>
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <h1 id="about-this-guide">2. About this guide</h1>
+          <h1 id="about-this-guide">2. このガイドについて</h1>
 
-          <p>This guide is a snapshot of the voice AI state of the art.<sup>[2]</sup></p>
+          <p>このガイドは、音声AI技術の最新状況のスナップショットです。<sup>[2]</sup></p>
                         
-            <p>Building production-ready voice agents is complicated. Many elements are non-trivial to implement from scratch. If you build voice AI apps, you'll likely rely on a framework for many of the things discussed in this document. But we think it's useful to understand how the pieces fit together, whether you are building them all from scratch or not.</p>
+            <p>本番環境で使用可能な音声エージェントの構築は複雑です。多くの要素をゼロから実装するのは容易ではありません。音声AIアプリを構築する場合、このドキュメントで説明する多くの機能についてフレームワークに依存することになるでしょう。しかし、パーツをすべて自分で作るにせよ、そうでないにせよ、それらがどのように組み合わさるかを理解することは有用だと考えています。</p>
             
-            <p>This guide was directly inspired by Sean DuBois' open-source book <a href="https://webrtcforthecurious.com" target="_blank">WebRTC For the Curious</a>. That book has helped numerous developers get up to speed with WebRTC since it was first released four years ago.<sup>[3]</sup></p>
+            <p>このガイドは、Sean DuBoisのオープンソースブック<a href="https://webrtcforthecurious.com" target="_blank">WebRTC For the Curious</a>から直接インスピレーションを得ています。この本は、最初にリリースされてから4年間、多くの開発者がWebRTCを習得する助けとなってきました。<sup>[3]</sup></p>
             
-            <p>The voice AI code examples in this document use the <a href="https://pipecat.ai" target="_blank">Pipecat</a> open source framework. Pipecat is a vendor-neutral agent layer for realtime AI.<sup>[4]</sup> We used Pipecat in this document because:</p>
+            <p>このドキュメントの音声AIコード例では、<a href="https://pipecat.ai" target="_blank">Pipecat</a>オープンソースフレームワークを使用しています。PipecatはリアルタイムAIのためのベンダー中立なエージェントレイヤーです。<sup>[4]</sup> このドキュメントでPipecatを使用した理由は以下の通りです：</p>
             
             <ol class="list-decimal">
-              <li>We build with it every day and help to maintain it, so we're familiar with it!</li>
-              <li>Pipecat is currently the most widely used voice AI framework, with teams at NVIDIA, Google, and hundreds of startups leveraging and contributing to the codebase.</li>
+              <li>私たちは毎日これを使って開発し、メンテナンスを支援しているので、よく知っているからです！</li>
+              <li>PipecatはNVIDIA、Google、そして何百ものスタートアップがコードベースを活用・貢献している、現在最も広く使用されている音声AIフレームワークだからです。</li>
             </ol>
             
-            <p>We've tried to give general advice in this document, rather than recommend commercial products and services. Where we highlight specific vendors, we do so because they are used by a large percentage of voice AI developers.</p>
+            <p>このドキュメントでは、特定の商用製品やサービスを推奨するのではなく、一般的なアドバイスを提供するよう努めています。特定のベンダーについて言及する場合は、音声AI開発者の大多数が使用しているからです。</p>
 
             
-            <p>Let's get started …</p>
+            <p>それでは始めましょう…</p>
 
         </div>
         
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[2] We originally wrote this guide for the AI Engineering Summit in February 2025. We updated it at the beginning of April.</p>
+              <p>[2] このガイドは元々2025年2月のAIエンジニアリングサミットのために書かれました。4月初めに更新を行いました。</p>
             </div>
             <div class="footnote">
-              <p>[3] <a href="https://webrtcforthecurious.com" target="_blank">webrtcforthecurious.com</a> — WebRTC is relevant to voice AI, as we'll discuss later in the <a href="#websockets-webrtc">WebSockets and WebRTC</a> section.</p>
+              <p>[3] <a href="https://webrtcforthecurious.com" target="_blank">webrtcforthecurious.com</a> — WebRTCは音声AIに関連しており、後の<a href="#websockets-webrtc">WebSocketsとWebRTC</a>セクションで説明します。</p>
             </div>
             <div class="footnote">
-              <p>[4] Pipecat has integrations for more than 50 <a href="https://docs.pipecat.ai/server/services/supported-services" target="_blank">AI models and services</a>, along with state of-the-art implementations of things like turn detection and interruption handling. You can write code with Pipecat that uses WebSockets, WebRTC, HTTP, and telephony to communicate with users. Pipecat includes transport implementations for a variety of infrastructure platforms including Twilio, Telnyx, LiveKit, Daily, and others. There are <a href="https://docs.pipecat.ai/client/introduction" target="_blank">client-side Pipecat SDKs</a> for JavaScript, React, iOS, Android, and C++.</p>
+              <p>[4] Pipecatには50以上の<a href="https://docs.pipecat.ai/server/services/supported-services" target="_blank">AIモデルとサービス</a>の統合機能があり、ターン検出や割り込み処理などの最先端の実装も含まれています。WebSocket、WebRTC、HTTP、電話を使用してユーザーと通信するコードをPipecatで書くことができます。Twilio、Telnyx、LiveKit、Daily、その他のインフラストラクチャプラットフォーム用のトランスポート実装も含まれています。JavaScript、React、iOS、Android、C++用の<a href="https://docs.pipecat.ai/client/introduction" target="_blank">クライアントサイドPipecat SDK</a>もあります。</p>
             </div>
           </div>
         </div>
@@ -247,35 +249,35 @@
       <div class="chunk-row">
         <div class="chunk-content">
 
-          <h1 id="basic-loop">3. The basic conversational AI loop</h1>
+          <h1 id="basic-loop">3. 基本的な会話AIループ</h1>
 
-            <p>The basic "job to be done" of a voice AI agent is to listen to what a human says, respond in some useful way, then repeat that sequence.</p>
+            <p>音声AIエージェントの基本的な「仕事」は、人間の発話を聞き、有用な方法で応答し、そのシーケンスを繰り返すことです。</p>
             
-            <p>Production voice agents today almost all have a very similar architecture. A voice agent program runs in the cloud and orchestrates the speech-to-speech loop. The agent program uses multiple AI models, some running locally to the agent, some accessed via APIs. The agent program also uses LLM function calling or structured outputs to integrate with back-end systems.</p>
+            <p>現在の本番環境の音声エージェントは、ほぼすべて非常に似通ったアーキテクチャを持っています。音声エージェントプログラムはクラウドで実行され、音声対音声のループをオーケストレーションします。エージェントプログラムは複数のAIモデルを使用し、一部はエージェントにローカルで実行され、一部はAPIを介してアクセスされます。また、エージェントプログラムはLLMのファンクションコーリングまたは構造化出力を使用してバックエンドシステムと統合します。</p>
 
             
             <ol class="list-decimal">
-              <li>Speech is captured by a microphone on a user's device, encoded, and sent over the network to a voice agent program running in the cloud.</li>
-              <li>Input speech is transcribed, to create text input for the LLM.</li>
-              <li>Text is assembled into a context — a prompt — and inference is performed by an LLM. Inference output will often be filtered or transformed by the agent program logic.<sup>[5]</sup></li>
-              <li>Output text is sent to a text-to-speech model to create audio output.</li>
-              <li>Audio output is sent back to the user.</li>
+              <li>音声はユーザーのデバイスのマイクで取得され、エンコードされ、クラウドで実行されている音声エージェントプログラムにネットワーク経由で送信されます。</li>
+              <li>入力音声は、LLMのテキスト入力を作成するために文字起こしされます。</li>
+              <li>テキストはコンテキスト — プロンプト — にまとめられ、LLMで推論が実行されます。推論出力は、エージェントプログラムのロジックによってフィルタリングまたは変換されることがあります。<sup>[5]</sup></li>
+              <li>出力テキストは音声出力を作成するためにテキスト音声合成モデルに送信されます。</li>
+              <li>音声出力はユーザーに送り返されます。</li>
             </ol>
             
-            <p>You'll notice that the voice agent program is running in the cloud, and the text-to-speech, LLM, and speech-to-text processing are happening in the cloud. Over the long term, we expect to see more AI workloads running on-device. Today, though, <strong>production voice AI is very cloud-centric</strong>, for two reasons:</p>
+            <p>音声エージェントプログラムがクラウドで実行され、テキスト音声合成、LLM、音声認識の処理もクラウドで行われていることにお気づきでしょう。長期的には、より多くのAIワークロードがデバイス上で実行されるようになると予想しています。しかし、今日の<strong>本番環境の音声AIは非常にクラウド中心</strong>です。その理由は2つあります：</p>
             
             <ol class="list-decimal">
-              <li>Voice AI agents need to use the best available AI models to reliably execute complex workflows at low latency. End-user devices do not yet have enough AI compute horsepower to run the best STT, LLM, and TTS models at acceptable latency.</li>
-              <li>The majority of commercial voice AI agents today are communicating with users via phone calls. For a phone call, there is no end-user device — at least, not one that you can run any code on!</li>
+              <li>音声AIエージェントは、複雑なワークフローを低レイテンシーで確実に実行するために、利用可能な最高のAIモデルを使用する必要があります。エンドユーザーのデバイスには、最高のSTT、LLM、TTSモデルを許容可能なレイテンシーで実行するのに十分なAI計算能力がまだありません。</li>
+              <li>今日の商用音声AIエージェントの大多数は、電話を通じてユーザーと通信しています。電話の場合、エンドユーザーのデバイス — 少なくとも、コードを実行できるデバイス — は存在しません！</li>
             </ol>
             
-            <p>Let's dive<sup>[6]</sup> into this agent orchestration world and answer questions like:</p>
+            <p>このエージェントオーケストレーションの世界に深く潜り込んで、以下のような質問に答えていきましょう：</p>
             
             <ol class="list-decimal">
-              <li>What LLMs work best for voice AI agents?</li>
-              <li>How do you manage the conversation context during a long-running session?</li>
-              <li>How do you connect voice agents to existing back-end systems?<sup>[7]</sup></li>
-              <li>How do you know if your voice agents are performing well?</li>
+              <li>音声AIエージェントにはどのLLMが最適ですか？</li>
+              <li>長時間のセッション中に会話のコンテキストをどのように管理しますか？</li>
+              <li>音声エージェントを既存のバックエンドシステムにどのように接続しますか？<sup>[7]</sup></li>
+              <li>音声エージェントがうまく機能しているかどうかをどのように判断しますか？</li>
             </ol>
 
         </div>
@@ -283,17 +285,17 @@
         <div class="chunk-notes">
           <div class="chapter-image">
             <img src="images/Figure 0200.svg" class="image-hide-narrow" width="100%">
-            <p class="image-caption image-hide-narrow">The architecture of almost all production voice AI agents today</p>
+            <p class="image-caption">今日のほぼすべての本番環境の音声AIエージェントのアーキテクチャ</p>
           </div>
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[5] For example, to detect common LLM errors and safety issues.</p>
+              <p>[5] 例えば、一般的なLLMのエラーや安全性の問題を検出するためです。</p>
             </div>
             <div class="footnote">
-              <p>[6] Let's delve — ed.</p>
+              <p>[6] 深く掘り下げましょう — 編集者より</p>
             </div>
             <div class="footnote">
-              <p>[7] For example, CRMs, proprietary knowledge bases, and call center systems.</p>
+              <p>[7] 例えば、CRM、独自のナレッジベース、コールセンターシステムなど。</p>
             </div>
           </div>
         </div>
@@ -301,118 +303,118 @@
 
       <div class="chunk-row">
         <div class="chunk-content">
-           <h1 id="core-tech">4. Core technologies and best practices</h1>
+           <h1 id="core-tech">4. コア技術とベストプラクティス</h1>
         </div>
       </div>
       
       <div class="chunk-row">
         <div class="chunk-content">  
-            <h2 id="latency">4.1. Latency</h2>
+            <h2 id="latency">4.1. レイテンシー</h2>
             
-            <p>Building voice agents is similar in most ways to other kinds of AI engineering. If you have experience building text-based, multi-turn AI agents, much of your experience from that domain will be useful in voice, as well.</p>
+            <p>音声エージェントの構築は、他のAIエンジニアリングと多くの点で似ています。テキストベースのマルチターンAIエージェントの構築経験がある場合、その分野での経験の多くは音声でも役立つでしょう。</p>
             
-            <p><strong>The big difference is latency.</strong></p>
+            <p><strong>大きな違いはレイテンシーです。</strong></p>
             
-            <p>Humans expect fast responses in normal conversation. A response time of 500ms is typical. Long pauses feel unnatural.</p>
+            <p>人間は通常の会話で素早い応答を期待します。一般的な応答時間は500ミリ秒です。長い間を置くと不自然に感じます。</p>
             
-            <p>It's worth learning how to accurately measure latency — from the end user's perspective — if you are building voice AI agents.</p>
+            <p>音声AIエージェントを構築している場合、エンドユーザーの視点からレイテンシーを正確に測定する方法を学ぶ価値があります。</p>
             
-            <p>You will often see AI platforms quote latencies that are not true "voice-to-voice" measurements. This is generally not malicious. From the provider side of things, the easy way to measure latency is to measure inference time. So that's how providers get used to thinking about latency. However, this server-side view does not account for audio processing, phrase endpointing delay, network transport, and operating system overhead.</p>
+            <p>AIプラットフォームが引用するレイテンシーは、真の「音声対音声」の測定値ではないことがよくあります。これは一般的に悪意があるわけではありません。プロバイダー側から見ると、レイテンシーを測定する簡単な方法は推論時間を測定することです。そのため、プロバイダーはそのようにレイテンシーを考えるようになります。しかし、このサーバーサイドの視点では、音声処理、フレーズエンドポイントの遅延、ネットワーク転送、オペレーティングシステムのオーバーヘッドは考慮されません。</p>
             
-            <p><strong>Measuring voice-to-voice latency is easy to do manually.</strong></p>
+            <p><strong>音声対音声のレイテンシーを手動で測定するのは簡単です。</strong></p>
             
-            <p>Simply record the conversation, load the recording into an audio editor, look at the audio waveform, and measure from the end of the user's speech to the beginning of the LLM's speech.</p>
+            <p>会話を録音し、その録音をオーディオエディタにロードし、音声波形を見て、ユーザーの発話の終わりからLLMの発話の始まりまでを測定するだけです。</p>
             
-            <p>If you build conversational voice applications for production use, it's worthwhile to occasionally sanity check your latency numbers this way. Bonus points for adding simulated network packet loss and jitter when you do these tests!</p>
+            <p>本番環境で会話型音声アプリケーションを構築する場合、このようにレイテンシーの数値を時々サニティチェックすることは価値があります。これらのテストを行う際にネットワークパケットロスとジッターをシミュレートすると、さらにボーナスポイントです！</p>
             
-            <p>Measuring true voice-to-voice latency is challenging to do programmatically. Some of the latency happens deep inside the operating system. So most observability tools just measure time-to-first-(audio)-byte. This is a reasonable proxy for total voice-to-voice latency, but again please note that things you don't measure — like phrase endpointing variation and network round-trip time — can become problematic if you have no way to track them.</p>
+            <p>真の音声対音声レイテンシーをプログラムで測定するのは難しいです。レイテンシーの一部はオペレーティングシステムの深部で発生します。そのため、ほとんどの観測ツールは最初の（音声）バイトまでの時間だけを測定します。これは音声対音声の総レイテンシーの妥当な代用となりますが、フレーズエンドポイントの変動やネットワークの往復時間など、測定していないものが問題になる可能性があることに注意してください。</p>
             
-            <p><strong>If you are building conversational AI applications, 800ms voice-to-voice latency is a good target to aim for.</strong> Here's a breakdown of a voice-to-voice round trip from a user's microphone, to the cloud, and back. These numbers are fairly typical, and the total is about 1s. 800ms is challenging, though not impossible, to consistently achieve with today's LLMs! </p>
+            <p><strong>会話型AIアプリケーションを構築している場合、800ミリ秒の音声対音声レイテンシーは良い目標となります。</strong>以下は、ユーザーのマイクからクラウドを経由して戻ってくるまでの音声対音声の往復の内訳です。これらの数値は一般的なもので、合計は約1秒です。800ミリ秒は今日のLLMでは達成が難しいですが、不可能ではありません！</p>
 
             <table class="data-table latency-breakdown">
               <thead>
                 <tr>
-                  <th>Stage</th>
-                  <th>Time (ms)</th>
+                  <th>段階</th>
+                  <th>時間 (ミリ秒)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>macOS mic input</td>
+                  <td>macOSマイク入力</td>
                   <td>40</td>
                 </tr>
                 <tr>
-                  <td>opus encoding</td>
+                  <td>opusエンコーディング</td>
                   <td>21</td>
                 </tr>
                 <tr class="network-row">
-                  <td>network stacks and transit</td>
+                  <td>ネットワークスタックと転送</td>
                   <td>10</td>
                 </tr>
                 <tr>
-                  <td>packet handling</td>
+                  <td>パケット処理</td>
                   <td>2</td>
                 </tr>
                 <tr>
-                  <td>jitter buffer</td>
+                  <td>ジッターバッファ</td>
                   <td>40</td>
                 </tr>
                 <tr>
-                  <td>opus decoding</td>
+                  <td>opusデコーディング</td>
                   <td>1</td>
                 </tr>
                 <tr>
-                  <td>transcription and endpointing</td>
+                  <td>文字起こしとエンドポイント検出</td>
                   <td>300</td>
                 </tr>
                 <tr>
-                  <td>llm ttfb</td>
+                  <td>LLM TTFB</td>
                   <td>350</td>
                 </tr>
                 <tr>
-                  <td>sentence aggregation</td>
+                  <td>文章集約</td>
                   <td>20</td>
                 </tr>
                 <tr>
-                  <td>tts ttfb</td>
+                  <td>TTS TTFB</td>
                   <td>120</td>
                 </tr>
                 <tr>
-                  <td>opus encoding</td>
+                  <td>opusエンコーディング</td>
                   <td>21</td>
                 </tr>
                 <tr>
-                  <td>packet handling</td>
+                  <td>パケット処理</td>
                   <td>2</td>
                 </tr>
                 <tr class="network-row">
-                  <td>network stacks and transit</td>
+                  <td>ネットワークスタックと転送</td>
                   <td>10</td>
                 </tr>
                 <tr>
-                  <td>jitter buffer</td>
+                  <td>ジッターバッファ</td>
                   <td>40</td>
                 </tr>
                 <tr>
-                  <td>opus decoding</td>
+                  <td>opusデコーディング</td>
                   <td>1</td>
                 </tr>
                 <tr>
-                  <td>macOS speaker output</td>
+                  <td>macOSスピーカー出力</td>
                   <td>15</td>
                 </tr>
                 <tr>
-                  <td>Total ms</td>
+                  <td>合計ミリ秒</td>
                   <td>993</td>
                 </tr>
               </tbody>
             </table>
             
-            <p class="table-caption">A voice-to-voice conversation round trip — latency breakdown.</p>
+            <p class="table-caption">音声対音声の会話の往復 — レイテンシーの内訳</p>
 
-            <p>We have demonstrated Pipecat agents that achieve 500ms voice-to-voice latency by hosting all models within the same GPU-enabled cluster, and optimizing all models for latency instead of throughput. This approach is not widely used today. Hosting models is expensive. And open weights LLMs are used less often for voice AI than the best proprietary models like GPT-4o or Gemini. See the next section for a discussion of LLMs for voice agents.</p>
+            <p>すべてのモデルを同じGPU対応クラスタ内でホストし、スループットではなくレイテンシーのためにすべてのモデルを最適化することで、500ミリ秒の音声対音声レイテンシーを達成するPipecatエージェントを実証しています。このアプローチは今日ではあまり使用されていません。モデルのホスティングは高価です。また、GPT-4oやGeminiなどの最高の独自モデルと比べて、オープンウェイトLLMは音声AI用に使用されることが少なくなっています。LLMについては次のセクションで説明します。</p>
 
-            <p>Because latency is so important for voice use cases, latency will come up often throughout this guide.</p>
+            <p>音声のユースケースではレイテンシーが非常に重要なため、このガイド全体を通してレイテンシーについて頻繁に取り上げることになります。</p>
         </div>
         <div class="chunk-notes">
           <div class="image-hide-narrow">
@@ -422,29 +424,29 @@
       </div>
       
       <div class="chunk-row">
-        <div class="chunk-content">
-            <h2 id="llms-for-voice">4.2. LLMs for voice use cases</h2>
+        <div class="chunk-content">  
+            <h2 id="llms-for-voice">4.2. 音声用途のLLM</h2>
             
-            <p>The release of GPT-4 in March 2023 kicked off the current era of voice AI. GPT-4 was the first LLM that could both sustain a flexible, multi-turn conversation and be prompted precisely enough to perform useful work. Today, GPT-4's successor – GPT-4o – is still the dominant model for conversational voice AI.</p>
+            <p>GPT-4 in March 2023のリリースは、現在の音声AIの時代を切り開きました。GPT-4は、柔軟なマルチターン会話を維持し、必要な作業を正確に実行できる最初のLLMでした。今日、GPT-4の後継者 – GPT-4o – は、コンバーショナル音声AIのドメインで依然としてドメインを占めています。</p>
             
-            <p>Several other models are now as good or better than the original GPT-4 at things that are critical for voice AI:</p>
+            <p>いくつかの他のモデルは、音声AIにとって重要なことについて、元のGPT-4と同じか、それ以上です。</p>
             
             <ul class="arrow-list">
-              <li>Low enough latency for interactive voice conversation.</li>
-              <li>Good instruction following.<sup>[8]</sup></li>
-              <li>Reliable function calling.<sup>[9]</sup></li>
-              <li>Low rates of hallucination and other kinds of inappropriate responses.</li>
-              <li>Personality and tone.</li>
-              <li>Cost.</li>
+              <li>インタラクティブな音声会話に対する低いレイテンシー。</li>
+              <li>良い命令の後続性.<sup>[8]</sup></li>
+              <li>信頼性のある機能呼び出し.<sup>[9]</sup></li>
+              <li>幻覚と他の不適切な応答の低レート。</li>
+              <li>性格とトーン。</li>
+              <li>コスト。</li>
             </ul>
         </div>
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[8] How easy is it to prompt the model to do specific things?</p>
+              <p>[8] モデルに特定のことをさせるのはどれくらい簡単ですか？</p>
             </div>
             <div class="footnote">
-              <p>[9] Voice AI agents rely heavily on function calling.</p>
+              <p>[9] 音声AIエージェントは、機能呼び出しに大きく依存しています。</p>
             </div>
           </div>
         </div>
@@ -453,11 +455,11 @@
       <div class="chunk-row">
         <div class="chunk-content">
             
-            <p>But today's GPT-4o is also better than the original GPT-4! Especially at instruction following, function calling, and reduced rates of hallucination.</p>
+            <p>しかし、今日のGPT-4oは、元のGPT-4よりも優れています！特に命令の後続性、機能呼び出し、幻覚の低レートで。</p>
             
-            <p><strong>Voice AI use cases are demanding enough that it generally makes sense to use the best available model.</strong> At some point this will change, and models that are not state of the art will be good enough for broad adoption in voice AI use cases. But that's not true, yet.</p>
+            <p><strong>音声AIのユースケースは、その分野で一般的に意味があるため、一般的に最良の可用モデルを使用することが一般的に意味があります。</strong> いつかこれは変わるでしょうが、それはまだ真実ではありません。</p>
             
-            <p>We do expect, though, that Google's Gemini 2.0 Flash, which was released on February 6th, will be widely used for voice AI. Gemini 2.0 Flash is fast, on par with GPT-4o at instruction following and function calling, and priced aggressively.</p>
+            <p>私たちは、GoogleのGemini 2.0 Flashが2月6日にリリースされたことを期待しています。Gemini 2.0 Flashは、命令の後続性と機能呼び出しにおいてGPT-4oと同等で、積極的な価格設定がされています。</p>
         </div>
       </div>
       
@@ -465,7 +467,7 @@
         <div class="chunk-content">
             <h3 id="latency-llm">4.2.1 LLM Latency</h3>
             
-            <p>The current version of Claude Sonnet 3.5 would be an excellent choice for voice AI, except that inference latency (time to first token) has not been an Anthropic priority. Claude Sonnet median latency is typically double the latency of GPT-4o and Gemini Flash, with a much bigger P95 spread as well.</p>
+            <p>Claude Sonnet 3.5の現在のバージョンは、音声AIにとって非常に優れた選択肢ですが、推論レイテンシー（最初のトークンまでの時間）がAnthropicの優先事項ではないため、使用できません。Claude Sonnetの中央レイテンシーは、通常GPT-4oとGemini Flashの2倍で、はるかに大きなP95スプレッドもあります。</p>
             
             <table class="data-table model-comparison">
               <thead>
@@ -493,11 +495,11 @@
                 </tr>
               </tbody>
             </table>
-            <p class="table-caption">Time to first token (TTFT) metrics for OpenAI, Anthropic, and Google APIs - Feb 2025</p>
+            <p class="table-caption">OpenAI、Anthropic、およびGoogle APIのTTFT時間測定 – 2025年2月</p>
             
-            <p>A rough rule of thumb: LLM time-to-first-token of 500ms or less is good enough for most voice AI use cases. GPT-4o TTFT is typically 400-500ms. Gemini Flash is similar.</p>
+            <p>経験則によると：LLMの最初のトークン時間が500ミリ秒以下であれば、ほとんどの音声AIユースケースにとって十分です。GPT-4oのTTFTは通常400-500ミリ秒です。Gemini Flashは似ています。</p>
             
-            <p>Note that GPT-4o mini is not faster than GPT-4o. This often surprises people, because the general expectation is that small models are faster than big models.</p>
+            <p>GPT-4o miniはGPT-4oより速くないことに注意してください。これは一般的な期待とは異なり、小さなモデルは大きなモデルより速いと考えられることが多いためです。</p>
             
         </div>
       </div>
@@ -506,15 +508,15 @@
         <div class="chunk-content">
             <h3 id="cost-comparison">4.2.2 Cost comparison</h3>
             
-            <p>Inference cost has been dropping regularly and rapidly. So, in general, LLM cost has been the least important factor in choosing which LLM to use. Gemini 2.0 Flash's newly announced pricing offers a 10x cost reduction compared to GPT-4o. We'll see what impact this has on the voice AI landscape.</p>
+            <p>推論コストは定期的に低下しており、急速に低下しています。そのため、一般的にLLMコストは、どのLLMを使用するかを選択する際の最も重要な要因ではありません。Gemini 2.0 Flashの新しい価格設定は、GPT-4oと比較して10倍のコスト削減を提供しています。私たちは、この影響が音声AIのエンジンランドに与える影響を見てみます。</p>
             
             <table class="data-table model-comparison">
               <thead>
                 <tr>
                   <th>Model</th>
-                  <th>3-minute conversation</th>
-                  <th>10-minute conversation</th>
-                  <th>30-minute conversation</th>
+                  <th>3分間の会話</th>
+                  <th>10分間の会話</th>
+                  <th>30分間の会話</th>
                 </tr>
               </thead>
               <tbody>
@@ -538,24 +540,24 @@
                 </tr>
               </tbody>
             </table>
-            <p class="table-caption">Session costs for multi-turn conversations grow super-linearly with duration. A 30-minute session is roughly 100x more expensive than a 3-minute session. You can reduce the cost of long sessions with caching, context summarization, and other techniques.</p>
+            <p class="table-caption">セッションコストは、セッションの長さに比例して超線形に増加します。30分間のセッションは、3分間のセッションの約100倍の高価です。キャッシュ、コンテキスト要約、その他の手法を使用して長いセッションのコストを削減できます。</p>
             
-            <p>Note that cost increases super linearly as a function of session length. Unless you trim or summarize the context during a session, cost becomes an issue for long sessions. This is particularly true for speech-to-speech models (see <a href="#speech-to-speech">below</a>).</p>
+            <p>セッションの長さに応じてコストが超線形的に増加することに注意してください。セッション中にコンテキストをトリミングまたは要約しない限り、長いセッションではコストが問題になります。これは特に音声対音声モデルで顕著です（<a href="#speech-to-speech">以下</a>を参照）。</p>
             
-            <p>The math of context growth makes it tricky to pin down a per-minute cost for a voice conversation. In addition, API providers are increasingly offering token caching, which can offset cost (and reduce latency) but adds to the complexity of estimating what costs will be for different use cases.</p>
+            <p>コンテキストの成長の数学的性質により、音声会話の1分あたりのコストを正確に把握するのは難しくなっています。さらに、APIプロバイダーはトークンキャッシングを提供するようになってきており、これはコストを相殺し（そしてレイテンシーを削減）できますが、異なるユースケースのコスト見積もりの複雑さを増加させます。</p>
             
-            <p>OpenAI's automatic token caching for the OpenAI Realtime API is particularly nice. We encourage other platforms to consider implementing similarly simple, transparent caching.<sup>[10]</sup></p>
+            <p>OpenAI Realtime APIの自動トークンキャッシングは特に優れています。他のプラットフォームも同様にシンプルで透明性のあるキャッシングの実装を検討することを推奨します。<sup>[10]</sup></p>
             
-            <p>We built <a href="https://dub.sh/voice-agents-010" target="_blank">a calculator for the OpenAI Realtime API</a> that shows how cost scales with session length, factoring in caching.</p>
+            <p>私たちは<a href="https://dub.sh/voice-agents-010" target="_blank">OpenAI Realtime API用の計算機</a>を作成しました。これは、キャッシングを考慮に入れて、セッションの長さに応じてコストがどのようにスケールするかを示しています。</p>
         </div>
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
               <a href="https://dub.sh/voice-agents-010" target="_blank"><img src="images/Figure 0700 Spreadsheet.png" width="90%"></a>
-              <p class="image-caption">OpenAI Realtime API cost calculator</p>
+              <p class="image-caption">OpenAI Realtime APIコスト計算機</p>
             </div>
             <div class="footnote">
-              <p>[10] Announcement: <a href="https://community.openai.com/t/new-realtime-api-voices-and-cache-pricing/998238" target="_blank">New Realtime API Voices and Cache Pricing</a></p>
+              <p>[10] お知らせ: <a href="https://community.openai.com/t/new-realtime-api-voices-and-cache-pricing/998238" target="_blank">新しいRealtimeAPI音声とキャッシュ価格設定</a></p>
             </div>
           </div>
         </div>
@@ -563,47 +565,46 @@
       
       <div class="chunk-row">
         <div class="chunk-content">
-            <h3 id="open-source">4.2.3 Open source / open weights</h3>
+            <h3 id="open-source">4.2.3 オープンソース / オープンウェイト</h3>
             
-            <p>The Llama 3.3 and 4.0 open weights models from Meta perform better than the original GPT-4 on benchmarks. But they are not generally better than GPT-4o and Gemini for commercial use cases, today, unless you must run your LLM locally rather than use an API.<sup>[11]</sup></p>
+            <p>MetaのLlama 3.3および4.0オープンウェイトモデルは、ベンチマークにおいて元のGPT-4よりも優れたパフォーマンスを示しています。しかし、LLMをAPIではなくローカルで実行する必要がある場合を除いて、現在の商用ユースケースでは一般的にGPT-4oやGeminiよりも優れているわけではありません。<sup>[11]</sup></p>
             
-            <p>Note that Meta does not offer a first-party, hosted Llama inference service. Many providers offer Llama inference endpoints, and serverless GPU platforms offer a range of options for deploying your own Llama.</p>
+            <p>MetaはLlamaの一次提供のホスト型推論サービスを提供していないことに注意してください。多くのプロバイダーがLlama推論エンドポイントを提供しており、サーバーレスGPUプラットフォームは独自のLlamaをデプロイするための様々なオプションを提供しています。</p>
             
-            <p>We do expect to see a lot of progress in open source / open weights models in 2025. Llama 4 is brand new and the community is still evaluating its practical performance in multi-turn, conversationl AI use cases. In addition, it seems likely that future open weights models from Alibaba (Qwen), DeepSeek, Google (Gemma), and Microsoft (Phi) will be good options for voice AI use cases.</p>
+            <p>2025年にはオープンソース/オープンウェイトモデルで多くの進展が見られると予想しています。Llama 4は全く新しく、コミュニティはまだマルチターンの会話AIユースケースにおける実用的なパフォーマンスを評価している段階です。さらに、Alibaba（Qwen）、DeepSeek、Google（Gemma）、Microsoft（Phi）からの将来のオープンウェイトモデルが音声AIユースケースに適したオプションになる可能性が高いでしょう。</p>
         </div>
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[11] If you plan to fine-tune an LLM for your use case, Llama 3.3 70B is a very good starting point. More on fine-tuning below.</p>
+              <p>[11] ユースケースに合わせてLLMをファインチューニングする予定がある場合、Llama 3.3 70Bは非常に良い出発点です。ファインチューニングについては後述します。</p>
             </div>
           </div>
         </div>
       </div>
-      
       <div class="chunk-row">
         <div class="chunk-content">
-            <h3 id="speech-to-speech">4.2.4 What about speech-to-speech models?</h3>
+            <h3 id="speech-to-speech">4.2.4. 音声対音声モデルについて</h3>
             
-            <p>Speech-to-speech models are an exciting, relatively new, development. A speech-to-speech LLM can be prompted with audio, rather than text, and can produce audio output directly. This eliminates the speech-to-text and text-to-speech parts of the voice agent orchestration loop.</p>
+            <p>音声対音声モデルは、比較的新しい、エキサイティングな開発です。音声対音声LLMは、テキストではなく音声で入力を受け取り、直接音声出力を生成することができます。これにより、音声エージェントのオーケストレーションループから音声認識とテキスト音声合成の部分が不要になります。</p>
             
-            <p>The potential benefits of speech-to-speech models are:</p>
+            <p>音声対音声モデルの潜在的な利点は以下の通りです：</p>
             
             <ul class="arrow-list">
-              <li>Lower latency.</li>
-              <li>Improved ability to understand the nuances of human conversation.</li>
-              <li>More natural voice output.</li>
+              <li>より低いレイテンシー</li>
+              <li>人間の会話のニュアンスをより良く理解する能力</li>
+              <li>より自然な音声出力</li>
             </ul>
             
-            <p>OpenAI and Google have both released speech-to-speech APIs. Everyone training large models and building voice AI applications believes that speech-to-speech models are the future of voice AI.</p>
+            <p>OpenAIとGoogleの両社が音声対音声APIをリリースしています。大規模モデルのトレーニングを行い、音声AIアプリケーションを構築しているすべての人が、音声対音声モデルが音声AIの未来であると信じています。</p>
             
-            <p>However, current speech to speech models and APIs are not yet good enough for most production voice AI use cases.</p>
+            <p>しかし、現在の音声対音声モデルとAPIは、ほとんどの本番環境の音声AIユースケースにはまだ十分な性能を持っていません。</p>
             
-            <p>Today's best speech-to-speech models definitely sound more natural than today's best text-to-speech models. OpenAI's <a href="https://platform.openai.com/docs/guides/audio" target="_blank">gpt4o-audio-preview</a> <sup>[12]</sup> model really does sound like a preview of the voice AI future.</p>
+            <p>今日の最高の音声対音声モデルは、今日の最高のテキスト音声合成モデルよりも確かにより自然に聞こえます。OpenAIの<a href="https://platform.openai.com/docs/guides/audio" target="_blank">gpt4o-audio-preview</a><sup>[12]</sup>モデルは、本当に音声AI未来のプレビューのように聞こえます。</p>
         </div>
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[12] <a href="https://platform.openai.com/docs/guides/audio" target="_blank">OpenAI audio API docs</a></p>
+              <p>[12] <a href="https://platform.openai.com/docs/guides/audio" target="_blank">OpenAI音声APIドキュメント</a></p>
             </div>
           </div>
         </div>
@@ -611,18 +612,18 @@
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <p>Speech-to-speech models aren't yet as mature and reliable as text-mode LLMs, though.</p>
+          <p>しかし、音声対音声モデルは、テキストモードのLLMほど成熟しておらず、信頼性も高くありません。</p>
           
           <ul class="arrow-list">
-              <li>Lower latency is possible in theory, but audio uses more tokens than text. Larger token contexts are slower for the LLM to process. In practice, today, audio models are usually slower than text models for long multi-turn conversations.<sup>[13]</sup></li>
-              <li>Better understanding does seem to be a real benefit of these models. This is particularly apparent for Gemini 2.0 Flash audio input. The story is a bit less clear today for gpt 4o-audio-preview, which is a smaller and somewhat less capable model than the text-mode GPT-4o.</li>
-              <li>Better natural voice output is clearly perceptible, today. But the audio LLMs do have some odd output patterns in audio mode that don't happen in text mode as often: word repetition, discourse markers that sometimes fall into the uncanny valley, and occasional failure to complete sentences.</li>
+              <li>理論的にはレイテンシーを低くすることが可能ですが、音声はテキストよりも多くのトークンを使用します。より大きなトークンコンテキストはLLMの処理が遅くなります。実際には、今日、音声モデルは通常、長いマルチターン会話ではテキストモデルよりも遅くなります。<sup>[13]</sup></li>
+              <li>より良い理解は、これらのモデルの実際の利点であるように見えます。これは特にGemini 2.0 Flash音声入力で顕著です。gpt4o-audio-previewについては、テキストモードのGPT-4oよりも小さく、やや能力の低いモデルであるため、状況はやや不明確です。</li>
+              <li>より良い自然な音声出力は、今日では明らかに認識できます。しかし、音声LLMは音声モードで、テキストモードではあまり発生しない奇妙な出力パターンを持っています：単語の繰り返し、時々不気味の谷に落ちる談話マーカー、そして時々文を完成させない現象などです。</li>
           </ul>
         </div>
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[13] This latency issue for audio models is clearly fixable through a combination of caching, clever API design, and architectural evolution of the models themselves.</p>
+              <p>[13] 音声モデルのこのレイテンシーの問題は、キャッシング、巧妙なAPI設計、およびモデル自体のアーキテクチャの進化の組み合わせによって明らかに解決可能です。</p>
             </div>
           </div>
         </div>
@@ -630,37 +631,33 @@
       
       <div class="chunk-row">
         <div class="chunk-content">
-          <p>The biggest of these issues is the larger context size required for multi-turn audio. One approach to squaring the circle and getting the benefits of native audio without the context-size drawbacks is to process each conversation turn as a mixture of text and audio. Use audio for the most recent user message; use text for the rest of the conversation history.</p>
+          <p>これらの問題の中で最大のものは、マルチターン音声に必要な大きなコンテキストサイズです。この問題を解決し、ネイティブ音声のメリットをコンテキストサイズのデメリットなしに得る一つのアプローチは、各会話ターンをテキストと音声の混合として処理することです。最新のユーザーメッセージには音声を使用し、残りの会話履歴にはテキストを使用します。</p>
 
-          <p>The beta speech-to-speech offering from OpenAI — the OpenAI Realtime API — is fast and the voice quality is amazing. But the model behind that API is the smaller gpt-4o-audio-preview rather than the full GPT-4o. So instruction following and function calling are not as good. It's also tricky to manage the conversation context using the Realtime API, and the API has a few new-product rough edges.<sup>[14]</sup></p>
+          <p>OpenAIのベータ版音声対音声サービス — OpenAI Realtime API — は高速で、音声品質は驚くべきものです。しかし、このAPIの背後にあるモデルは、完全なGPT-4oではなく、より小さなgpt-4o-audio-previewです。そのため、命令の遵守とファンクションコーリングは同等ではありません。また、Realtime APIを使用して会話のコンテキストを管理するのは難しく、APIには新製品特有の荒さがいくつかあります。<sup>[14]</sup></p>
             
-          <p>The Google Multimodal Live API is another promising — and early in its evolution — speech-to-speech service. This API offers a view into the near-future of the Gemini models: long context windows, excellent vision capabilities, fast inference, strong audio understanding, code execution, and search grounding. Like the OpenAI Realtime API, the Multimodal Live API is not yet the right choice for most production voice AI applications.</p>
+          <p>Google Multimodal Live APIは、もう一つの有望な — そしてその進化の初期段階にある — 音声対音声サービスです。このAPIは、Geminiモデルの近い将来の姿を示しています：長いコンテキストウィンドウ、優れたビジョン機能、高速な推論、優れた音声理解、コード実行、検索による基盤付け。OpenAI Realtime APIと同様に、Multimodal Live APIはまだほとんどの本番環境の音声AIアプリケーションに適した選択肢ではありません。</p>
             
-          <p>We expect to see lots of progress on the speech-to-speech front in 2025. But whether production voice AI applications will begin to use speech-to-speech APIs this year is still an open question.</p>
+          <p>2025年には音声対音声の分野で多くの進展が見られると予想しています。しかし、本番環境の音声AIアプリケーションが今年中に音声対音声APIを使用し始めるかどうかは、まだ未解決の問題です。</p>
 
         </div>
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-
+              <p>[14] <a href="https://latent.space/p/realtime-api" target="_blank">Realtime APIに関する詳細な注記</a>を参照してください。</p>
             </div>
-            <div class="footnote">
-              <p>[14] See <a href="https://latent.space/p/realtime-api" target="_blank">detailed notes about the Realtime API</a></p>
-            </div>
-
           </div>
         </div>
       </div>
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <h2 id="speech-to-text">4.3. Speech-to-text</h2>
+          <h2 id="speech-to-text">4.3. 音声認識</h2>
             
-          <p>Speech-to-text is the "input" stage for voice AI. Speech-to-text is also commonly referred to as <i>transcription</i> or <i>ASR</i> (automatic speech recognition).</p>
+          <p>音声認識は音声AIの「入力」段階です。音声認識は一般的に<i>文字起こし</i>や<i>ASR</i>（自動音声認識）とも呼ばれています。</p>
             
-          <p>For voice AI use cases, we need very low transcription latency and very low word error rate. Sadly, optimizing a speech model for low latency has a negative impact on accuracy.</p>
+          <p>音声AIのユースケースでは、非常に低いレイテンシーと非常に低い単語エラー率が必要です。残念ながら、低レイテンシーのために音声モデルを最適化すると、精度に悪影響を及ぼします。</p>
             
-          <p>Today there are several very good transcription models that are <em>not</em> architected for low latency. Whisper is an open source model that is used in many products and services. It's very good, but usually has a time-to-first-token of 500ms or more, so is rarely used for conversational voice AI use cases.</p>         
+          <p>今日、低レイテンシー向けに設計されていない非常に優れた文字起こしモデルがいくつかあります。Whisperは多くの製品やサービスで使用されているオープンソースモデルです。非常に優れていますが、通常は最初のトークンまでの時間が500ms以上かかるため、会話型音声AIのユースケースではほとんど使用されません。</p>         
         </div>
         <div class="chunk-notes">
         </div>
@@ -670,69 +667,69 @@
         <div class="chunk-content">
             <h3 id="deepgram">4.3.1 Deepgram</h3>
             
-            <p>Most production voice AI agents today use <a href="https://deepgram.com" target="_blank">Deepgram</a> for speech-to-text. Deepgram is a commercial speech-to-text AI lab and API platform with a long track record of delivering a very good combination of low latency, low word error rate, and low cost.</p>
+            <p>現在、本番環境の音声AIエージェントのほとんどは、音声認識に<a href="https://deepgram.com" target="_blank">Deepgram</a>を使用しています。Deepgramは、低レイテンシー、低単語エラー率、低コストの非常に良い組み合わせを提供してきた長い実績を持つ商用音声認識AI研究所およびAPIプラットフォームです。</p>
             
-            <p>Deepgram's models are available as self-serve APIs or as Docker containers that customers can run on their own systems.</p>
+            <p>Deepgramのモデルは、セルフサービスAPIまたは顧客が自身のシステムで実行できるDockerコンテナとして利用可能です。</p>
             
-            <p>Most people start out using Deepgram speech-to-text via the API. Time-to-first token is typically 150ms, for users in the US.</p>
+            <p>ほとんどの人はAPIを介してDeepgramの音声認識を使い始めます。米国のユーザーの場合、最初のトークンまでの時間は通常150msです。</p>
             
-            <p>Managing a scalable GPU cluster is a significant ongoing devops job to take on, so moving from the Deepgram API to hosting their models on your own infrastructure is not something you should do without a good reason. Good reasons include:</p>
+            <p>スケーラブルなGPUクラスターの管理は重要な継続的なデブオプス作業であるため、DeepgramのAPIから自社インフラストラクチャ上でモデルをホスティングに移行することは、正当な理由がなければ行うべきではありません。正当な理由には以下が含まれます：</p>
             
             <ul class="arrow-list">
-              <li>Keeping audio/transcription data private. Deepgram offers BAAs and data processing agreements, but some customers will want complete control of audio and transcription data. Customers outside the US may have a legal obligation to keep data inside their own countries or regions. (Note that by default Deepgram's terms of service allow them to train on all data you send to them via their APIs. You can opt out of this on enterprise plans.)</li>
-              <li>Reducing latency. Deepgram does not have inference servers outside the US. From Europe, Deepgram's TTFT is ~250ms; from India, ~350ms.</li>
+              <li>音声/文字起こしデータのプライバシー保持。DeepgramはBAAやデータ処理契約を提供していますが、一部の顧客は音声および文字起こしデータの完全な管理を望むでしょう。米国外の顧客は、自国または地域内にデータを保持する法的義務がある場合があります。（デフォルトでは、Deepgramの利用規約により、APIを通じて送信するすべてのデータでトレーニングすることが許可されています。エンタープライズプランではこれをオプトアウトできます。）</li>
+              <li>レイテンシーの削減。Deepgramは米国外に推論サーバーを持っていません。ヨーロッパからのDeepgramのTTFTは約250ms、インドからは約350msです。</li>
             </ul>
             
-            <p>Deepgram offers fine-tuning services, which can help lower word error rates if your use case includes relatively unusual vocabularies, speech styles, or accents.</p>
+            <p>Deepgramはファインチューニングサービスを提供しており、比較的珍しい語彙、話し方、またはアクセントを含むユースケースがある場合、単語エラー率を下げるのに役立ちます。</p>
             
         </div>
       </div>
       
       <div class="chunk-row">
         <div class="chunk-content">
-            <h3 id="prompting-help">4.3.2 Prompting can help the LLM.</h3>
+            <h3 id="prompting-help">4.3.2 プロンプトがLLMを助けることができる</h3>
             
-            <p>A large percentage of Deepgram transcription errors result from the very small amount of context that the transcription model has available in a realtime stream.</p>
+            <p>Deepgramの文字起こしエラーの大部分は、リアルタイムストリームで文字起こしモデルが利用できるコンテキストが非常に少ないことに起因しています。</p>
             
-            <p>Today's LLMs are smart enough to work around transcription errors. When the LLM is performing inference it has access to the full conversation context. So you can tell the LLM that the input is a transcription of user speech, and that it should reason accordingly.</p>
+            <p>今日のLLMは文字起こしエラーを回避するのに十分賢いです。LLMが推論を実行する際、会話の全コンテキストにアクセスできます。そのため、入力がユーザーの発話の文字起こしであることをLLMに伝え、それに応じて推論するよう指示できます。</p>
 
-            <pre><code>You are a helpful, concise, and reliable voice assistant. Your primary goal is to understand the user's spoken requests, even if the speech-to-text transcription contains errors. Your responses will be converted to speech using a text-to-speech system. Therefore, your output must be plain, unformatted text.
+            <pre><code>あなたは役立つ、簡潔で、信頼性の高い音声アシスタントです。あなたの主な目標は、音声認識の文字起こしにエラーが含まれていても、ユーザーの話された要求を理解することです。あなたの応答は音声合成システムを使用して音声に変換されます。したがって、あなたの出力はプレーンな、フォーマットされていないテキストでなければなりません。
 
-When you receive a transcribed user request:
-1. Silently correct for likely transcription errors. Focus on the intended meaning, not the literal text. If a word sounds like another word in the given context, infer and correct. For example, if the transcription says "buy milk two tomorrow" interpret this as "buy milk tomorrow".
-2. Provide short, direct answers unless the user explicitly asks for a more detailed response. For example, if the user says "what time is it?" you should respond with "It is 2:38 AM". If the user asks "Tell me a joke", you should provide a short joke.
-3. Always prioritize clarity and accuracy. Respond in plain text, without any formatting, bullet points, or extra conversational filler.
-4. If you are asked a question that is time dependent, use the current date, which is February 3, 2025, to provide the most up to date information.
-5. If you do not understand the user request, respond with "I'm sorry, I didn't understand that."
+ユーザーの文字起こしされた要求を受け取ったとき：
+1. 可能性の高い文字起こしエラーを黙って修正してください。文字通りのテキストではなく、意図された意味に焦点を当ててください。ある単語が与えられたコンテキストで別の単語のように聞こえる場合は、推測して修正してください。例えば、文字起こしが「明日ミルク買う二」と言っている場合、これを「明日ミルク買う」と解釈してください。
+2. ユーザーが明示的により詳細な回答を求めない限り、短く直接的な回答を提供してください。例えば、ユーザーが「今何時？」と言った場合、「午前2時38分です」と応答すべきです。ユーザーが「ジョークを教えて」と頼んだ場合、短いジョークを提供すべきです。
+3. 常に明確さと正確さを優先してください。フォーマット、箇条書き、または余分な会話的な埋め草なしで、プレーンテキストで応答してください。
+4. 時間に依存する質問をされた場合は、現在の日付（2025年2月3日）を使用して、最新の情報を提供してください。
+5. ユーザーの要求を理解できない場合は、「申し訳ありませんが、理解できませんでした」と応答してください。
 
-Your output will be directly converted to speech, so your response should be natural-sounding and appropriate for a spoken conversation.
+あなたの出力は直接音声に変換されるため、あなたの応答は自然に聞こえ、話し言葉の会話に適したものであるべきです。
 </code></pre>
-            <p class="image-caption">Example prompt language for a voice AI agent.</p>
+            <p class="image-caption">音声AIエージェントのプロンプト例。</p>
         </div>
       </div>
       
       <div class="chunk-row">
         <div class="chunk-content">
-            <h3 id="other-stt-options">4.3.3 Other speech-to-text options</h3>
+            <h3 id="other-stt-options">4.3.3 その他の音声認識オプション</h3>
 
-            <p>We expect to see lots of new developments in the speech-to-text space in 2025. Some new developments we are tracking, as of early April 2025:</p>
+            <p>2025年には音声認識の分野で多くの新しい開発が見られると予想しています。2025年4月初旬の時点で追跡している新しい開発のいくつかは：</p>
 
             <ul class="arrow-list">
-              <li>OpenAI <a href="https://openai.com/index/introducing-our-next-generation-audio-models/">just released</a> two new speech-to-text models, gpt-4o-transcribe and gpt-4o-mini-transcribe.</li>
-              <li>Audio model and infrastructure company <a href="https://gladia.io/">Gladia</a> is widely used for French-language voice AI, and is gaining mind share outside France now as well.</li>
-              <li>Two other well-regarded speech technology companies, <a href="https://speechmatics.com/">Speechmatics</a> and <a href="https://assembly.ai/">AssemblyAI</a>, have begun to focus more on conversational voice use cases, shipping streaming APIs and models with faster TTFTs.</li>
-              <li>NVIDIA is shipping <a href="https://developer.nvidia.com/blog/new-standard-for-speech-recognition-and-translation-from-the-nvidia-nemo-canary-model/">open source speech models</a> that perform extremely well on benchmarks.</li>
-              <li>Inference company <a href="https://groq.com/">Groq</a>'s hosted version of Whisper Large v3 Turbo now has a median TTFT under 300ms, which puts it into the range of being an option for conversational voice applications. This is the first Whisper API service that we have seen achieve this latency.</li>
+              <li>OpenAIは<a href="https://openai.com/index/introducing-our-next-generation-audio-models/">先日リリースした</a>2つの新しい音声認識モデル、gpt-4o-transcribeとgpt-4o-mini-transcribeを発表しました。</li>
+              <li>音声モデルとインフラストラクチャ企業の<a href="https://gladia.io/">Gladia</a>はフランス語の音声AIで広く使用されており、現在ではフランス以外でもシェアを拡大しています。</li>
+              <li>他の評価の高い音声技術企業である<a href="https://speechmatics.com/">Speechmatics</a>と<a href="https://assembly.ai/">AssemblyAI</a>は、会話型音声のユースケースにより焦点を当て始め、ストリーミングAPIとより高速なTTFTを持つモデルを提供しています。</li>
+              <li>NVIDIAは<a href="https://developer.nvidia.com/blog/new-standard-for-speech-recognition-and-translation-from-the-nvidia-nemo-canary-model/">オープンソースの音声モデル</a>を提供しており、ベンチマークで非常に優れたパフォーマンスを示しています。</li>
+              <li>推論企業<a href="https://groq.com/">Groq</a>がホスティングするWhisper Large v3 Turboのバージョンは、現在中央値TTFTが300ms未満であり、会話型音声アプリケーションのオプションとなる範囲に入っています。これは、このレイテンシーを達成した最初のWhisper APIサービスです。</li>
             </ul>
             
-            <p>All of the big cloud services have speech-to-text APIs. None of them are as good as Deepgram, today, for low-latency, general-purpose English language transcription.</p>
+            <p>すべての大手クラウドサービスには音声認識APIがあります。現在、低レイテンシーの汎用英語文字起こしについては、どれもDeepgramほど優れていません。</p>
             
-            <p>But you may want to use Azure AI Speech, Amazon Transcribe, or Google Speech-to-Text if:</p>
+            <p>しかし、以下の場合はAzure AI Speech、Amazon Transcribe、またはGoogle Speech-to-Textの使用を検討するかもしれません：</p>
             
             <ul class="arrow-list">
-              <li>You already have a large committed spend or data processing arrangements with one of these cloud providers.</li>
-              <li>Your users will not be speaking English. Deepgram supports a number of non-English languages, but the different labs all have different language strengths. It's worth doing your own testing if you are operating in non-English languages.</li>
-              <li>You have a lot of startup credits to spend!</li>
+              <li>これらのクラウドプロバイダーのいずれかに大規模なコミット済み支出またはデータ処理の取り決めがすでにある場合。</li>
+              <li>ユーザーが英語を話さない場合。Deepgramは多くの非英語言語をサポートしていますが、異なる研究所はそれぞれ異なる言語の強みを持っています。非英語言語で運用する場合は、独自のテストを行う価値があります。</li>
+              <li>使用できるスタートアップクレジットがたくさんある場合！</li>
             </ul>
             
         </div>
@@ -740,23 +737,23 @@ Your output will be directly converted to speech, so your response should be nat
       
       <div class="chunk-row">
         <div class="chunk-content">
-            <h3 id="gemini-transcribing">4.3.4 Transcribing with Google Gemini</h3>
+            <h3 id="gemini-transcribing">4.3.4 Google Geminiでの文字起こし</h3>
             
-            <p>One way to leverage Gemini 2.0 Flash's strengths as a low-cost, native audio model is to use Gemini 2.0 for both conversation generation and transcription.</p>
+            <p>低コストのネイティブ音声モデルとしてのGemini 2.0 Flashの強みを活用する一つの方法は、会話生成と文字起こしの両方にGemini 2.0を使用することです。</p>
             
-            <p>To do this we need to run two parallel inference processes.</p>
+            <p>これを行うには、2つの並列推論プロセスを実行する必要があります。</p>
 
             <ul class="arrow-list">
-              <li>One inference process generates the conversation response.</li>
-              <li>The other inference process transcribes the user's speech.</li>
-              <li>Each audio input is used for just one turn. The full conversation context is always the audio of the most recent user speech, plus the text transcription of all previous inputs and outputs.</li>
-              <li>This gives you the best of both worlds: native audio understanding for the current user utterance; reduced token count for the whole context.<sup>[15]</sup></li>
+              <li>一つの推論プロセスは会話応答を生成します。</li>
+              <li>もう一つの推論プロセスはユーザーの発話を文字起こしします。</li>
+              <li>各音声入力は1ターンだけ使用されます。完全な会話コンテキストは常に、最新のユーザー発話の音声と、すべての以前の入力と出力のテキスト文字起こしで構成されます。</li>
+              <li>これにより、現在のユーザー発話のネイティブ音声理解と、全体のコンテキストのトークン数削減という両方の利点が得られます。<sup>[15]</sup></li>
             </ul>
           </div>
           <div class="chunk-notes">
             <div class="chunk-footnotes">
               <div class="footnote">
-                <p>[15] Replacing audio with text reduces token count by ~10x. For a ten-minute conversation, this reduces the total tokens processed – and therefore the cost of input tokens – by ~100x. (Because the conversation history compounds every turn.)</p>
+                <p>[15] 音声をテキストに置き換えることでトークン数が約10分の1に削減されます。10分間の会話では、処理される総トークン数（したがって入力トークンのコスト）が約100分の1に削減されます（会話履歴が毎ターン蓄積されるため）。</p>
               </div>
             </div>
           </div>
@@ -765,7 +762,7 @@ Your output will be directly converted to speech, so your response should be nat
         <div class="chunk-row">
           <div class="chunk-content">
 
-            <p>Here is code to implement these parallel inference processes as a Pipecat pipeline.</p>
+            <p>以下は、これらの並列推論プロセスをPipecatパイプラインとして実装するコードです。</p>
 
             <pre class="language-python"><code>
   pipeline = Pipeline( 
@@ -791,62 +788,62 @@ Your output will be directly converted to speech, so your response should be nat
   )            
             </code></pre>
 
-            <p>The logic is as follows.</p>
+            <p>ロジックは以下の通りです。</p>
             
             <ol class="list-decimal">
-              <li>The conversation LLM receives the conversation history as text, plus each new turn of user speech as native audio, and outputs a conversation response.</li>
-              <li>The input transcription LLM receives the same input, but outputs a literal transcription of the most recent user speech.</li>
-              <li>At the end of each conversation turn, the user audio context entry is replaced with the transcription of that audio.</li>
+              <li>会話LLMはテキスト形式の会話履歴と、各新しいターンのユーザー発話をネイティブ音声として受け取り、会話応答を出力します。</li>
+              <li>入力文字起こしLLMは同じ入力を受け取りますが、最新のユーザー発話の文字通りの文字起こしを出力します。</li>
+              <li>各会話ターンの終わりに、ユーザー音声のコンテキストエントリーはその音声の文字起こしに置き換えられます。</li>
             </ol>
 
-            <p>Gemini's per-token costs are so low that this approach is actually cheaper than using Deepgram for transcription.</p>
+            <p>Geminiのトークンあたりのコストが非常に低いため、このアプローチは実際にDeepgramを使用した文字起こしよりも安価です。</p>
 
-            <p>It's important to understand that we are not using Gemini 2.0 Flash here as a full speech-to-speech model, but we <em>are</em> using its native audio understanding capabilities. We are prompting the model so that it runs in two different "modes", conversation and transcription. </p>
+            <p>ここでGemini 2.0 Flashを完全な音声から音声へのモデルとして使用しているわけではありませんが、そのネイティブ音声理解機能を活用していることを理解することが重要です。私たちはモデルに対して、会話と文字起こしという2つの異なる「モード」で実行するようにプロンプトを与えています。</p>
 
-            <p>Using an LLM in this way shows the power of SOTA LLM architectures and capabilities. This approach is new enough that it is still experimental, but early testing suggests that it can yield both better conversation understanding and more accurate transcription than any other current technique. There are drawbacks, however. Transcription latency is not as good as using a specialized speech-to-text model. The complexity of running two inference processes and swapping context elements is substantial. A general-purpose LLM will be vulnerable to prompt injection and context following errors that a specialized transcription model isn't vulnerable to.</p>
+            <p>このようにLLMを使用することは、最先端のLLMアーキテクチャと機能の力を示しています。このアプローチは非常に新しいため、まだ実験的ですが、初期のテストでは、他の現在の技術よりも優れた会話理解と正確な文字起こしの両方を実現できる可能性があることが示唆されています。ただし、欠点もあります。文字起こしのレイテンシーは専用の音声テキスト変換モデルほど良くありません。2つの推論プロセスを実行し、コンテキスト要素を交換する複雑さはかなり大きいです。汎用LLMは、専門の文字起こしモデルが影響を受けないプロンプトインジェクションやコンテキスト追従エラーに対して脆弱です。</p>
 
-            <p>Here is a system instruction (a prompt) for transcription.</p>
+            <p>以下は文字起こしのためのシステム指示（プロンプト）です。</p>
 
             <pre><code>
-You are an audio transcriber. You are receiving audio from a user. Your job is to transcribe the input audio to text exactly as it was said by the user.
+あなたは音声文字起こし担当者です。ユーザーから音声を受け取っています。あなたの仕事は、ユーザーが話した通りに正確に入力音声をテキストに文字起こしすることです。
 
-You will receive the full conversation history before the audio input, to help with context. Use the full history only to help improve the accuracy of your transcription.
+音声入力の前に完全な会話履歴を受け取り、コンテキストの理解に役立てます。完全な履歴は、文字起こしの精度を向上させるためだけに使用してください。
 
-Rules:
-- Respond with an exact transcription of the audio input.
-- Do not include any text other than the transcrip- tion.
-- Do not explain or add to your response.
-- Transcribe the audio input simply and precisely.
-- If the audio is not clear, emit the special string "".
-- No response other than exact transcription, or "", is allowed.
+ルール：
+- 音声入力の正確な文字起こしで応答してください。
+- 文字起こし以外のテキストを含めないでください。
+- 説明や追加は行わないでください。
+- 音声入力をシンプルかつ正確に文字起こししてください。
+- 音声が明確でない場合は、特殊な文字列「」を出力してください。
+- 正確な文字起こし、または「」以外の応答は許可されていません。
             </code></pre>
         </div>
       </div>
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <h2 id="text-to-speech">4.4. Text-to-speech</h2>
+          <h2 id="text-to-speech">4.4. テキスト音声変換</h2>
             
-            <p>Text-to-speech is the output stage of the voice-to-voice processing loop.</p>
+            <p>テキスト音声変換は、音声から音声への処理ループの出力段階です。</p>
             
-            <p>Voice AI developers choose a voice model/service based on:</p>
+            <p>音声AI開発者は以下の基準で音声モデル/サービスを選択します：</p>
             
             <ul class="arrow-list">
-              <li>How natural the voices sound (overall quality)<sup>[16]</sup></li>
-              <li>Latency<sup>[17]</sup></li>
-              <li>Cost</li>
-              <li>Language support</li>
-              <li>Word-level timestamp support</li>
-              <li>Ability to customize voices, accents, and pronunciations</li>
+              <li>音声の自然さ（全体的な品質）<sup>[16]</sup></li>
+              <li>レイテンシー<sup>[17]</sup></li>
+              <li>コスト</li>
+              <li>言語サポート</li>
+              <li>単語レベルのタイムスタンプサポート</li>
+              <li>音声、アクセント、発音のカスタマイズ能力</li>
             </ul>
         </div>
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[16] Pronunciation, intonation, pacing, stress, rhythm, emotional valence.</p>
+              <p>[16] 発音、イントネーション、ペース、強調、リズム、感情の表現。</p>
             </div>
             <div class="footnote">
-              <p>[17] Time to first audio byte.</p>
+              <p>[17] 最初の音声バイトまでの時間。</p>
             </div>
           </div>
         </div>
@@ -855,40 +852,40 @@ Rules:
       <div class="chunk-row">
         <div class="chunk-content">
             
-            <p>Voice options expanded markedly in 2024. New startups appeared on the scene. Best-in-class voice quality went way up. And every provider improved latency.</p>
+            <p>音声オプションは2024年に著しく拡大しました。新しいスタートアップが登場し、最高クラスの音声品質が大幅に向上しました。そして、すべてのプロバイダーがレイテンシーを改善しました。</p>
             
-            <p>As is the case for speech-to-text, all of the big cloud providers have text-to-speech products.<sup>[18]</sup> But most voice AI developers are not using them, because models from startups are currently better.</p>
+            <p>音声テキスト変換と同様に、すべての大手クラウドプロバイダーはテキスト音声変換製品を提供しています。<sup>[18]</sup> しかし、ほとんどの音声AI開発者はスタートアップのモデルの方が現在優れているため、それらを使用していません。</p>
         </div>
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[18] Azure AI Speech, Amazon Polly, and Google Cloud Text-to-Speech.</p>
+              <p>[18] Azure AI Speech、Amazon Polly、Google Cloud Text-to-Speech。</p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="chunk-row">
-        <div class="chunk-content"> 
+        <div class="chunk-content">
             
-            <p>The labs that have the most traction for realtime conversational voice models are (in alphabetical order):</p>
+            <p>リアルタイム会話音声モデルで最も牽引力のあるラボは（アルファベット順）：</p>
             
             <ul class="arrow-list">
-              <li>Cartesia – Uses an innovative state-space model architecture to achieve both high quality and low latency.</li>
-              <li>Deepgram – Prioritizes latency and low cost.</li>
-              <li>ElevenLabs – Emphasizes emotional and contextual realism.</li>
-              <li>Rime – Offers customizable TTS models trained exclusively on conversational speech.</li>
+              <li>Cartesia – 革新的な状態空間モデルアーキテクチャを使用して、高品質と低レイテンシーの両方を実現。</li>
+              <li>Deepgram – レイテンシーと低コストを優先。</li>
+              <li>ElevenLabs – 感情的およびコンテキスト的なリアリズムを重視。</li>
+              <li>Rime – 会話音声のみでトレーニングされたカスタマイズ可能なTTSモデルを提供。</li>
             </ul>
             
-            <p>All four companies have strong models, engineering teams, and stable and performant APIs. Cartesia, Deepgram, and Rime models can be deployed on your own infrastructure.</p>
+            <p>これら4社はすべて、強力なモデル、エンジニアリングチーム、安定した高性能APIを持っています。Cartesia、Deepgram、およびRimeのモデルは、自社のインフラストラクチャにデプロイすることができます。</p>
 
             <table class="data-table voice-model-breakdown">
               <thead>
                 <tr>
                   <th> </th>
-                  <th>Cost per minute (approx)</th>
-                  <th>Median TTFB (ms)</th>
-                  <th>P95 TTFB (ms)</th>
+                  <th>1分あたりのコスト（概算）</th>
+                  <th>中央値TTFB（ミリ秒）</th>
+                  <th>P95 TTFB（ミリ秒）</th>
                 </tr>
               </thead>
               <tbody>
@@ -918,24 +915,24 @@ Rules:
                 </tr>
               </tbody>
             </table>
-            <p class="table-caption">Approximate cost per minute and time to first byte metrics – February 2025. Note that cost depends on committed volume and features used.</p>
+            <p class="table-caption">1分あたりの概算コストと最初のバイトまでの時間の指標 – 2025年2月。コストはコミットされたボリュームと使用される機能によって異なることに注意してください。</p>
 
-            <p>As with speech-to-text, there is wide variance in quality and support for non-English voice models. If you are building voice AI for non-English use cases, you will likely need to do more extensive testing — test more services and more voices to find a solution that you are happy with.</p>
+            <p>音声テキスト変換と同様に、非英語音声モデルの品質とサポートには大きな差があります。非英語のユースケース向けに音声AIを構築している場合は、より広範なテストが必要になる可能性があります — より多くのサービスと音声をテストして、満足のいくソリューションを見つけてください。</p>
             
-            <p>All voice models will mispronounce words some of the time, and will not necessarily know how to pronounce proper nouns or unusual words.</p>
+            <p>すべての音声モデルは時々単語を誤って発音し、固有名詞や珍しい単語の発音方法を必ずしも知っているわけではありません。</p>
             
-            <p>Some services offer the ability to steer pronunciation. This is helpful if you know in advance that your text output will include specific proper nouns. If your voice service does not support phonetic steering, you can prompt your LLM to output "sounds-like" spellings of specific words. For example, in-vidia instead of NVIDIA.</p>
+            <p>一部のサービスでは発音を調整する機能を提供しています。これは、テキスト出力に特定の固有名詞が含まれることが事前にわかっている場合に役立ちます。音声サービスが音声的な調整をサポートしていない場合は、LLMに特定の単語の「発音に近い」スペルを出力するようにプロンプトを与えることができます。例えば、NVIDIAの代わりにin-vidiaなど。</p>
 
             <pre ><code class="nobreak">
-              Replace "NVIDIA" with "in vidia" and replace <br/>
-              "GPU" with "gee pee you" in your responses.
+              あなたの応答で「NVIDIA」を「イン ヴィディア」に置き換え、<br/>
+              「GPU」を「ジー ピー ユー」に置き換えてください。
             </code></pre>
-            <p class="image-caption">Example prompt language to steer pronunciation via LLM text output</p>
+            <p class="image-caption">LLMテキスト出力を通じて発音を調整するプロンプト言語の例</p>
             
 
 
 
-            <p>For conversational voice use cases, being able to track what text the user heard is important for maintaining accurate conversation context. This requires that a model generate word-level timestamp metadata in addition to the audio, and that the timestamp data be reconstructible backwards to the original input text. This is a relatively new capability for voice models. All of the above services support word-level timestamps.</p>
+            <p>会話音声のユースケースでは、ユーザーが聞いたテキストを追跡できることが、正確な会話コンテキストを維持するために重要です。これには、モデルが音声に加えて単語レベルのタイムスタンプメタデータを生成し、タイムスタンプデータが元の入力テキストに逆再構築できることが必要です。これは音声モデルにとって比較的新しい機能です。上記のすべてのサービスは単語レベルのタイムスタンプをサポートしています。</p>
 
             <pre><code>
 {
@@ -951,16 +948,16 @@ Rules:
 }
                     </code></pre>
 
-                    <p class="image-caption">Word-level timestamps from the Cartesia API.</p>
+                    <p class="image-caption">Cartesia APIからの単語レベルのタイムスタンプ。</p>
 
-            <p>In addition, a really solid realtime streaming API is helpful. Conversational voice applications often trigger multiple audio inferences in parallel. Voice agent code needs to be able to interrupt in-progress inference and to correlate each inference request to an output stream. Streaming APIs from voice model providers are all relatively new and still evolving. Currently, Cartesia and Rime have the most mature streaming support in Pipecat.</p>
+            <p>さらに、本当に堅牢なリアルタイムストリーミングAPIが役立ちます。会話音声アプリケーションでは、多くの場合、複数の音声推論が並行してトリガーされます。音声エージェントコードは、進行中の推論を中断し、各推論リクエストを出力ストリームに関連付けることができる必要があります。音声モデルプロバイダーからのストリーミングAPIはすべて比較的新しく、まだ進化中です。現在、CartesiaとRimeがPipecatで最も成熟したストリーミングサポートを提供しています。</p>
 
-            <p>We expect voice model progress to continue in 2025.</p>
+            <p>2025年も音声モデルの進歩が続くと予想されます。</p>
             
             <ul class="arrow-list">
-              <li>Several of the companies listed above have hinted at new models coming in the first half of the year.</li>
-              <li>OpenAI <a href="https://openai.com/index/introducing-our-next-generation-audio-models/" target="_blank">recently shipped</a> a new text-to-speech model, gpt-4o-mini-tts. This model is fully steerable, which opens up new possibilities for telling a voice model not just <em>what</em> to say but <em>how</em> to speak. You can experiment with steering gpt-4o-mini-tts at <a href="https://openai.fm" target="_blank">openai.fm</a>. </li>
-              <li><a href="https://groq.com/" target="_blank">Groq  </a> and <a href="https://play.ai/" target="_blank">PlayAI</a> recently <a href="https://groq.com/build-fast-with-text-to-speech/" target="_blank">announced a partnership</a>. Groq is known for fast inference, and PlayAI offers a low-latency voice model that supports more than 30 languages.</li>
+              <li>上記の企業の数社は、年の前半に新しいモデルが登場することを示唆しています。</li>
+              <li>OpenAIは<a href="https://openai.com/index/introducing-our-next-generation-audio-models/" target="_blank">最近</a>新しいテキスト音声変換モデル、gpt-4o-mini-ttsをリリースしました。このモデルは完全に調整可能で、音声モデルに何を言うかだけでなく、どのように話すかも指示できる新しい可能性を開きます。<a href="https://openai.fm" target="_blank">openai.fm</a>でgpt-4o-mini-ttsの調整を試すことができます。</li>
+              <li><a href="https://groq.com/" target="_blank">Groq</a>と<a href="https://play.ai/" target="_blank">PlayAI</a>は最近<a href="https://groq.com/build-fast-with-text-to-speech/" target="_blank">パートナーシップを発表</a>しました。Groqは高速推論で知られており、PlayAIは30以上の言語をサポートする低レイテンシーの音声モデルを提供しています。</li>
             </ul>
         </div>
         
@@ -970,20 +967,20 @@ Rules:
           
           <div class="chunk-footnotes">
           </div>
-        </div>
+</div>
       </div>
 
       <div class="chunk-row">
         <div class="chunk-content">
-          <h2 id="audio-processing">4.5. Audio processing</h2>
+          <h2 id="audio-processing">4.5. 音声処理</h2>
             
-            <p>A good voice AI platform or library will mostly hide the complexities of audio capture and processing. But if you build complex voice agents, at some point you'll bump up against bugs and corner cases in audio handling.<sup>[19]</sup> So it's worth taking a quick tour of the audio input pipeline.</p>
+            <p>優れた音声AIプラットフォームやライブラリは、音声キャプチャと処理の複雑さをほとんど隠してくれます。しかし、複雑な音声エージェントを構築すると、いずれ音声処理のバグやコーナーケースに遭遇するでしょう。<sup>[19]</sup> そのため、音声入力パイプラインを簡単に見ておく価値があります。</p>
         </div>
         
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[19] … this generalizes to all things in software, and perhaps most things in life.</p>
+              <p>[19] … これはソフトウェアのすべてのことに、そしておそらく人生のほとんどのことに当てはまります。</p>
             </div>
           </div>
         </div>
@@ -991,37 +988,37 @@ Rules:
 
       <div class="chunk-row">
         <div class="chunk-content">
-            <h3 id="avoiding-spurious-interruptions">4.5.1 Microphones and automatic gain control</h3>
+            <h3 id="avoiding-spurious-interruptions">4.5.1 マイクと自動ゲイン制御</h3>
             
-            <p>Microphones today are extremely sophisticated hardware devices coupled to large amounts of low-level software. This is usually great — we get terrific audio from tiny microphones built into mobile devices, laptops, and bluetooth earpieces.</p>
+            <p>現在のマイクは、大量の低レベルソフトウェアと結合した非常に洗練されたハードウェアデバイスです。これは通常素晴らしいことです — モバイルデバイス、ラップトップ、Bluetoothイヤホンに内蔵された小さなマイクから素晴らしい音声を得ることができます。</p>
             
-            <p>But sometimes this low-level software doesn't do what we want. In particular, bluetooth devices can add several hundred milliseconds of latency to voice input. This is largely outside of your control as a voice AI developer. But it's worth being aware that latency can vary widely depending on what operating system and input device a particular user has.</p>
+            <p>しかし、時にこの低レベルソフトウェアは私たちが望むことをしません。特に、Bluetoothデバイスは音声入力に数百ミリ秒のレイテンシーを追加することがあります。これは音声AI開発者としてあなたのコントロール外のことですが、特定のユーザーが使用しているオペレーティングシステムと入力デバイスによってレイテンシーが大きく異なる可能性があることを認識しておく価値があります。</p>
 
             <div class="chunk-image-inline">
-              <img src="images/Figure 1600.jpg" alt="Bluetooth is problematic? Always has been." class="microphone-image" width="98%">
+              <img src="images/Figure 1600.jpg" alt="Bluetoothは問題がある？常にそうでした。" class="microphone-image" width="98%">
             </div>
-            <p>Most audio capture pipelines will apply some amount of automatic gain control to the input signal. Again, this is usually what you want, because this compensates for things like the user's distance from the microphone. You can often disable some automatic gain control, but on consumer-class devices you usually can't disable it completely.</p>
+            <p>ほとんどの音声キャプチャパイプラインは、入力信号に対してある程度の自動ゲイン制御を適用します。これも通常は望ましいことです。なぜなら、ユーザーとマイクの距離などを補正するからです。一部の自動ゲイン制御を無効にすることはできますが、一般消費者向けデバイスでは通常、完全に無効にすることはできません。</p>
         </div>
       </div>
 
       <div class="chunk-row">
         <div class="chunk-content">
-            <h3 id="echo-cancellation">4.5.2 Echo cancellation</h3>
+            <h3 id="echo-cancellation">4.5.2 エコーキャンセレーション</h3>
             
-            <p>If a user is holding a phone up to their ear, or wearing headphones, you don't need to worry about feedback between the local microphone and speaker. But if a user is talking on a speakerphone, or using a laptop without headphones, then good echo cancellation is extremely important.</p>
+            <p>ユーザーが電話を耳に当てている場合や、ヘッドフォンを着用している場合は、ローカルマイクとスピーカー間のフィードバックについて心配する必要はありません。しかし、ユーザーがスピーカーフォンで話している場合や、ヘッドフォンなしでラップトップを使用している場合は、優れたエコーキャンセレーションが非常に重要です。</p>
             
-            <p>Echo cancellation is very sensitive to latency, so echo cancellation has to run on the device (not in the cloud). Today, excellent echo cancellation is built into telephony stacks, web browsers, and WebRTC native mobile SDKs.<sup>[20]</sup></p>
+            <p>エコーキャンセレーションはレイテンシーに非常に敏感であるため、エコーキャンセレーションはクラウドではなくデバイス上で実行する必要があります。現在、優れたエコーキャンセレーションは電話スタック、ウェブブラウザ、WebRTCネイティブモバイルSDKに組み込まれています。<sup>[20]</sup></p>
             
-            <p>So if you're using a voice AI, WebRTC, or telephony SDK, you should have echo cancellation that you can count on "just working" in almost all real-world scenarios. If you are rolling your own voice AI capture pipeline, you will need to figure out how to integrate echo cancellation logic. For example, if you are building a WebSocket-based React Native application, you won't have any echo cancellation by default.<sup>[21]</sup></p>
+            <p>したがって、音声AI、WebRTC、または電話SDKを使用している場合は、ほとんどの実際のシナリオで「正常に動作する」と信頼できるエコーキャンセレーションがあるはずです。独自の音声AIキャプチャパイプラインを構築している場合は、エコーキャンセレーションロジックを統合する方法を考える必要があります。例えば、WebSocketベースのReact Nativeアプリケーションを構築している場合、デフォルトではエコーキャンセレーションはありません。<sup>[21]</sup></p>
         </div>
         
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[20] Note that Firefox echo cancellation is not very good. We recommend that voice AI developers build with Chrome and Safari as primary platforms, and only test on Firefox as a secondary platform, time permitting.</p>
+              <p>[20] Firefoxのエコーキャンセレーションはあまり良くないことに注意してください。音声AI開発者はChromeとSafariを主要プラットフォームとして構築し、時間が許す限り、Firefoxは二次的なプラットフォームとしてのみテストすることをお勧めします。</p>
             </div>
             <div class="footnote">
-              <p>[21] We recently helped someone debug their React Native app's audio issues. The root cause was that they didn't realize they needed to implement echo cancellation, since they were not using a voice AI or WebRTC SDK.</p>
+              <p>[21] 最近、React Nativeアプリの音声問題のデバッグを手伝いました。根本的な原因は、音声AIやWebRTC SDKを使用していなかったため、エコーキャンセレーションを実装する必要があることに気づいていなかったことでした。</p>
             </div>
           </div>
         </div>
@@ -1029,34 +1026,34 @@ Rules:
 
       <div class="chunk-row">
         <div class="chunk-content">
-            <h3 id="noise-suppression">4.5.3 Noise suppression, speech, and music</h3>
+            <h3 id="noise-suppression">4.5.3 ノイズ抑制、音声、音楽</h3>
             
-            <p>Audio capture pipelines for telephony and WebRTC almost always default to "speech mode." Speech can be compressed much more than music, and noise reduction and echo cancellation algorithms are easier to implement for narrower band signals.</p>
+            <p>電話やWebRTCの音声キャプチャパイプラインは、ほとんどの場合「音声モード」がデフォルトです。音声は音楽よりもはるかに圧縮でき、ノイズ削減やエコーキャンセレーションアルゴリズムは、より狭い帯域の信号に対して実装が容易です。</p>
             
-            <p>Many telephony platforms only support 8khz audio. This is noticeably low-quality by modern standards. If you are routing through a system with this limitation, there's nothing you can do about it. Your users may or may not notice the quality — most people have low expectations for phone call audio.</p>
+            <p>多くの電話プラットフォームは8kHzの音声のみをサポートしています。これは現代の基準では明らかに低品質です。このような制限のあるシステムを経由している場合、それについてできることは何もありません。ユーザーはその品質に気づくかもしれませんし、気づかないかもしれません — ほとんどの人は電話の音声品質に対する期待が低いです。</p>
             
-            <p>WebRTC supports very high-quality audio.<sup>[22]</sup> Default WebRTC settings are usually 48khz sample rate, single channel, 32 kbs Opus encoding, and a moderate noise suppression algorithm. These settings are optimized for speech. They work across a wide range of devices and environments and are generally the right choice for voice AI.</p>
+            <p>WebRTCは非常に高品質の音声をサポートしています。<sup>[22]</sup> WebRTCのデフォルト設定は通常、48kHzのサンプルレート、シングルチャンネル、32kbpsのOpusエンコーディング、および適度なノイズ抑制アルゴリズムです。これらの設定は音声に最適化されています。幅広いデバイスと環境で機能し、一般的に音声AIに適した選択です。</p>
             
-            <p>Music will not sound good with these settings!</p>
+            <p>これらの設定では音楽は良く聞こえません！</p>
             
-            <p>If you need to send music over a WebRTC connection, you'll want to:</p>
+            <p>WebRTC接続を介して音楽を送信する必要がある場合は、次のようにします：</p>
             
             <ul class="arrow-list">
-              <li>Turn off echo cancellation (the user will need to wear headphones).</li>
-              <li>Turn off noise suppression.</li>
-              <li>Optionally, enable stereo.</li>
-              <li>Increase the Opus encoding bitrate (64 kbs is a good target for mono, 96 kbs or 128 kbs for stereo).</li>
+              <li>エコーキャンセレーションをオフにする（ユーザーはヘッドフォンを着用する必要があります）。</li>
+              <li>ノイズ抑制をオフにする。</li>
+              <li>オプションで、ステレオを有効にする。</li>
+              <li>Opusエンコーディングのビットレートを上げる（モノラルの場合は64kbps、ステレオの場合は96kbpsまたは128kbpsが適切です）。</li>
             </ul>
         </div>
         
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[22] Some use cases for high-quality audio:</p>
+              <p>[22] 高品質音声のいくつかのユースケース：</p>
               <ul class="arrow-list">
-                <li>A music lesson with an LLM teacher.</li>
-                <li>Recording a podcast that includes background sound or music.</li>
-                <li>Generating AI music interactively.</li>
+                <li>LLM教師による音楽レッスン。</li>
+                <li>バックグラウンドサウンドや音楽を含むポッドキャストの録音。</li>
+                <li>AI音楽をインタラクティブに生成する。</li>
               </ul>
             </div>
           </div>
@@ -1065,21 +1062,21 @@ Rules:
 
       <div class="chunk-row">
         <div class="chunk-content">
-            <h3 id="encoding">4.5.4 Encoding</h3>
+            <h3 id="encoding">4.5.4 エンコーディング</h3>
             
-            <p>Encoding is the general term for how audio data is formatted for sending over a network connection.<sup>[23]</sup></p>
+            <p>エンコーディングは、ネットワーク接続を介して送信するために音声データがフォーマットされる方法の一般的な用語です。<sup>[23]</sup></p>
         </div>
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[23] (Or for saving in a file.)</p>
+              <p>[23] （またはファイルに保存するため。）</p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="chunk-row">
-        <div class=""chunk-content">
+        <div class="chunk-content">
             
             <p>Common encodings for real-time communication include:</p>
             
@@ -1088,7 +1085,7 @@ Rules:
               <li>Opus — WebRTC and some telephony systems.</li>
               <li>G.711 — a standard telephony codec with wide support.</li>
             </ul>
-
+            
             <table class="data-table">
               <tr>
                 <th>Codec</th>
@@ -1205,7 +1202,7 @@ Rules:
               <li>WebSocket reconnection logic is quite hard to implement robustly. You will have to build a ping/ack framework (or fully test and understand the framework that your WebSocket library provides). TCP timeouts and connection events behave differently on different platforms.</li>
               <li>Finally, good WebRTC implementations today come with very good echo cancellation, noise reduction, and automatic gain control.</li>
             </ul>
-
+            
         </div>
         <div class="chunk-notes">
           <div class="chapter-image-positioned">
@@ -1245,7 +1242,7 @@ Rules:
           </div>
         </div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
             <h3 id="quic-moq">4.6.3 QUIC and MoQ</h3>
@@ -1411,7 +1408,7 @@ Rules:
           </div>
         </div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
             <pre class="language-python"><code>
@@ -1428,7 +1425,7 @@ Rules:
             <p>Tuning these parameters can improve turn detection behavior a lot for specific use cases.</p>
         </div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
             <h3 id="push-to-talk">4.7.2 Push-to-talk</h3>
@@ -1447,7 +1444,7 @@ Rules:
             
         </div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
             <h3 id="endpoint-markers">4.7.3 Endpoint markers</h3>
@@ -1462,7 +1459,7 @@ Rules:
             
         </div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
             <h3 id="context-aware-turn-detection">4.7.4 Context-aware turn detection</h3>
@@ -1644,7 +1641,7 @@ Turn 3:
 
         </div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
             <h3 id="differences-between-llm-apis">4.9.1 Differences between LLM APIs</h3>
@@ -1669,8 +1666,8 @@ Turn 3:
             </div>
           </div>
         </div>
-    </div>
-      
+      </div>
+
       <div class="chunk-row">
         <div class="chunk-content">
             <h3 id="modifying-context-between-turns">4.9.2 Modifying the context between turns</h3>
@@ -1701,7 +1698,7 @@ Turn 3:
             
         </div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
             <h3 id="function-calling-reliability">4.10.1 Function calling reliability in the voice AI context</h3>
@@ -1847,7 +1844,7 @@ Turn 3:
 
         </div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
             <h3 id="streaming-mode">4.10.4 Streaming mode and function call chunks</h3>
@@ -1859,13 +1856,13 @@ Turn 3:
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[38] If you’re using an AI framework, the framework probably hides this complexity
+              <p>[38] If you're using an AI framework, the framework probably hides this complexity
                 from you.</p>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
             
@@ -1930,9 +1927,9 @@ Turn 3:
             
             <p>As LLMs and APIs evolve to better support multimodal conversational use cases, we'd love to see LLM researchers explore ideas around asynchronous functions and long-running functions that act as generators.</p>
             
-        </div>
+</div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
             <h3 id="parallel-composite-function-calling">4.10.7 Parallel and composite function calling</h3>
@@ -2194,7 +2191,7 @@ Tower on a cloudy day.
           </div>
         </div>
       </div>
-      
+
       <div class="chunk-row">
         <div class="chunk-content">
              
@@ -2677,19 +2674,19 @@ llm.register_function("query_order_system", query_order_system)
             <ul class="arrow-list">
               <li>The voice AI agent conversation loop is usually a long-running process (not a request/response function that exits when a single response is finished generating).</li>
               <li>Voice agents stream audio in realtime. Anything that stalls streaming can create audio glitches. (CPU spikes on a shared virtual machine, program flow that blocks audio thread execution even for as little as 10ms, etc.)</li>
-              <li>Voice agents usually need either WebSocket or WebRTC connectivity. Cloud service network gateway and routing products don’t support WebSockets nearly as well as they support HTTP. They often don’t support UDP at all. (UDP is required for WebRTC.)</li>
+              <li>Voice agents usually need either WebSocket or WebRTC connectivity. Cloud service network gateway and routing products don't support WebSockets nearly as well as they support HTTP. They often don't support UDP at all. (UDP is required for WebRTC.)</li>
             </ul>
 
-            <p>For all of these reasons, it’s generally not possible to use a serverless framework like AWS Lambda or Google Cloud Run for voice AI.</p>
+            <p>For all of these reasons, it's generally not possible to use a serverless framework like AWS Lambda or Google Cloud Run for voice AI.</p>
   
             <p>The best practice today for deploying voice AI agents is:</p>
 
             <ul class="arrow-list">
-              <li>Once you’ve gotten past the prototyping phase, invest engineering time in creating lightweight tooling to build Docker (or similar) containers to deploy your agents.</li>
-              <li>Push your container to your compute platform of choice. For simple deployments, you can just keep a fixed number of virtual machines running. At some point, though, you’ll want to hook into your platform’s tooling so you can autoscale, deploy new versions gracefully, implement good service discovery and failover, and build other at-scale devops requirements.</li>
+              <li>Once you've gotten past the prototyping phase, invest engineering time in creating lightweight tooling to build Docker (or similar) containers to deploy your agents.</li>
+              <li>Push your container to your compute platform of choice. For simple deployments, you can just keep a fixed number of virtual machines running. At some point, though, you'll want to hook into your platform's tooling so you can autoscale, deploy new versions gracefully, implement good service discovery and failover, and build other at-scale devops requirements.</li>
               <li>Kubernetes is the standard these days for managing containers, deployments, and scaling. Kubernetes has a steep learning curve, but is supported on all of the major cloud platforms. Kubernetes has a very large ecosystem around it.</li>
-              <li>For deploying software updates, you’ll want to set long drain times that allow existing connections to stay alive until sessions end. This is not terribly hard to do in Kubernetes, but the details depend on your k8s engine and version.</li>
-              <li>Cold starts are a problem for voice AI agents, because fast connection times are important. Keeping an idle pool of agents is the easiest way to avoid long cold starts. If your workloads don’t require running large models locally, you can generally engineer fast container cold starts without too much effort.<sup>[59]</sup></li>
+              <li>For deploying software updates, you'll want to set long drain times that allow existing connections to stay alive until sessions end. This is not terribly hard to do in Kubernetes, but the details depend on your k8s engine and version.</li>
+              <li>Cold starts are a problem for voice AI agents, because fast connection times are important. Keeping an idle pool of agents is the easiest way to avoid long cold starts. If your workloads don't require running large models locally, you can generally engineer fast container cold starts without too much effort.<sup>[59]</sup></li>
             </ul>
 
             <p>Virtual machine specs and container packing often trip people up when deploying to production for the first time. The specs your agents need will vary depending on what libraries you use and how much CPU-intensive work you do within your agent process. A good rule of thumb is to start by running a single agent per virtual machine CPU, with double the maximum amount of RAM you see an agent process consuming on your dev machines.<sup>[60]</sup></p>
@@ -2699,7 +2696,7 @@ llm.register_function("query_order_system", query_order_system)
         <div class="chunk-notes">
           <div class="chunk-footnotes">
             <div class="footnote">
-              <p>[59] If you are running large models locally, advice about cold starts is well outside the scope of this guide. If you’re not already an expert on GPU and container optimization, you probably want to find an expert, rather than climb up that learning curve yourself (at least until you’re operating at a big enough scale to amortize the cost of developing the tooling you need).</p>
+              <p>[59] If you are running large models locally, advice about cold starts is well outside the scope of this guide. If you're not already an expert on GPU and container optimization, you probably want to find an expert, rather than climb up that learning curve yourself (at least until you're operating at a big enough scale to amortize the cost of developing the tooling you need).</p>
             </div>
             <div class="footnote">
               <p>[60] Make sure your container runtime is starting new agent processes on idle CPUs. This is not always the k8s default.</p>
@@ -2725,9 +2722,9 @@ llm.register_function("query_order_system", query_order_system)
               <li>Speech-to-speech model APIs from multiple providers.</li>
             </ul>
 
-            <p>If you’re interested in hot takes about 2025 from four experts in the voice AI space, skip to <a href="https://www.youtube.com/live/B6zTwHh-abw?t=3065s" target="_blank">54:05 in the recording of the panel</a> from January’s San Francisco Voice AI Meetup. Karan Goel, Niamh Gavin, Shrestha Basu-Mallick, and Swyx all offered their predictions for what we’ll see in the coming year: universal memory, AI in Hollywood, moving from model imitating to model understanding, and a contrarian position on robotics.</p>
+            <p>If you're interested in hot takes about 2025 from four experts in the voice AI space, skip to <a href="https://www.youtube.com/live/B6zTwHh-abw?t=3065s" target="_blank">54:05 in the recording of the panel</a> from January's San Francisco Voice AI Meetup. Karan Goel, Niamh Gavin, Shrestha Basu-Mallick, and Swyx all offered their predictions for what we'll see in the coming year: universal memory, AI in Hollywood, moving from model imitating to model understanding, and a contrarian position on robotics.</p>
             
-            <p>It’s going to be a fun year.</p>
+            <p>It's going to be a fun year.</p>
 
 
 
